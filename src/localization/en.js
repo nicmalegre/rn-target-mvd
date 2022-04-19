@@ -23,4 +23,10 @@ export default {
     passwordConfirmation: 'Password confirmation',
     button: 'Sign up',
   },
+
+  LOG_IN: {
+    title: 'Target MVD',
+    forgotPassword: 'Forgot your password?',
+    connectFacebook: 'Connect with facebook',
+  },
 };

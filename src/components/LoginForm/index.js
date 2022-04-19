@@ -1,6 +1,6 @@
 import React from 'react';
 import { func } from 'prop-types';
-import { Button, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
 import { login } from 'actions/userActions';
@@ -54,27 +54,31 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <>
       <Input
-        label={strings.SIGN_IN.email}
+        label={strings.SIGN_IN.email.toUpperCase()}
         keyboardType="email-address"
         autoCapitalize="none"
         testID="email-input"
         {...inputProps(FIELDS.email)}
       />
       <Input
-        label={strings.SIGN_IN.password}
+        label={strings.SIGN_IN.password.toUpperCase()}
         testID="password-input"
         secureTextEntry
         {...inputProps(FIELDS.password)}
       />
       <ErrorView errors={{ error }} />
-      <View style={styles.button}>
-        <Button
-          testID="login-submit-button"
-          title={status === LOADING ? strings.COMMON.loading : strings.SIGN_IN.button}
-          onPress={handleSubmit}
-          disabled={formHasErrors}
-        />
-      </View>
+
+      <TouchableOpacity
+        testID="login-submit-button"
+        onPress={handleSubmit}
+        disabled={formHasErrors}
+        style={styles.button}>
+        <Text style={styles.buttonTitle}>
+          {status === LOADING
+            ? strings.COMMON.loading.toUpperCase()
+            : strings.SIGN_IN.button.toUpperCase()}
+        </Text>
+      </TouchableOpacity>
     </>
   );
 };

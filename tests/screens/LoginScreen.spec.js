@@ -43,7 +43,7 @@ describe('<LoginScreen />', () => {
         .reply(200);
       fireEvent.press(wrapper.queryByTestId('login-submit-button'));
 
-      expect(wrapper.queryByText('Loading')).toBeTruthy();
+      expect(wrapper.queryByText('LOADING')).toBeTruthy();
       await waitFor(() => expect(wrapper.queryByText('Loading')).toBeNull());
     });
 

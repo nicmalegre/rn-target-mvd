@@ -18,4 +18,10 @@ export default {
     passwordConfirmation: 'Repetir contraseña',
     button: 'Iniciar sesión',
   },
+
+  LOG_IN: {
+    title: 'Target MVD',
+    forgotPassword: 'Olvidaste tu contraseña?',
+    connectFacebook: 'Conectar con facebook',
+  },
 };

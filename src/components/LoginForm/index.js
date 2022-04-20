@@ -1,6 +1,6 @@
 import React from 'react';
 import { func } from 'prop-types';
-import { Button, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
 import { login } from 'actions/userActions';
@@ -17,6 +17,11 @@ const FIELDS = {
   email: 'email',
   password: 'password',
 };
+
+const EMAIL_LABEL = strings.SIGN_IN.email.toUpperCase();
+const PASSWORD_LABEL = strings.SIGN_IN.password.toUpperCase();
+const LOADING_TEXT = strings.COMMON.loading.toUpperCase();
+const SIGN_IN_TEXT = strings.SIGN_IN.button.toUpperCase();
 
 const LoginForm = ({ onSubmit }) => {
   const { error, status } = useStatus(login);
@@ -54,27 +59,27 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <>
       <Input
-        label={strings.SIGN_IN.email}
+        label={EMAIL_LABEL}
         keyboardType="email-address"
         autoCapitalize="none"
         testID="email-input"
         {...inputProps(FIELDS.email)}
       />
       <Input
-        label={strings.SIGN_IN.password}
+        label={PASSWORD_LABEL}
         testID="password-input"
         secureTextEntry
         {...inputProps(FIELDS.password)}
       />
       <ErrorView errors={{ error }} />
-      <View style={styles.button}>
-        <Button
-          testID="login-submit-button"
-          title={status === LOADING ? strings.COMMON.loading : strings.SIGN_IN.button}
-          onPress={handleSubmit}
-          disabled={formHasErrors}
-        />
-      </View>
+
+      <TouchableOpacity
+        testID="login-submit-button"
+        onPress={handleSubmit}
+        disabled={formHasErrors}
+        style={styles.button}>
+        <Text style={styles.buttonTitle}>{status === LOADING ? LOADING_TEXT : SIGN_IN_TEXT}</Text>
+      </TouchableOpacity>
     </>
   );
 };

@@ -11,16 +11,20 @@ const Input = ({ label, value, onChangeText, error, active, touched, ...props })
   }, []);
 
   return (
-    <View>
-      {label && <Text>{label}</Text>}
-      <View>
+    <View style={styles.container}>
+      {!!label && <Text style={styles.label}>{label}</Text>}
+      <View style={styles.viewInput}>
         <TextInput
-          style={[styles.input, active && styles.inputActive]}
+          style={[styles.input, touched && !!error && styles.inputError]}
           value={value}
           onChangeText={onChangeText}
           {...props}
         />
-        {touched && !!error && <Text accessibilityLabel="form-error">{error}</Text>}
+        {touched && !!error && (
+          <Text accessibilityLabel="form-error" style={styles.errorText}>
+            {error}
+          </Text>
+        )}
       </View>
     </View>
   );

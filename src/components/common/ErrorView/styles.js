@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { ERROR } from 'constants/colors';
+import { PRIMARY_FONT_SEMI_BOLD } from 'constants/fonts';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
   error: {
     color: ERROR,
     fontSize: 10,
-    fontFamily: 'OpenSans-SemiBold',
+    fontFamily: PRIMARY_FONT_SEMI_BOLD,
     lineHeight: 12,
   },
 });

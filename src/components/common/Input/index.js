@@ -12,7 +12,7 @@ const Input = ({ label, value, onChangeText, error, active, touched, ...props })
 
   return (
     <View style={styles.container}>
-      {label && <Text style={styles.label}>{label}</Text>}
+      {!!label && <Text style={styles.label}>{label}</Text>}
       <View style={styles.viewInput}>
         <TextInput
           style={[styles.input, touched && !!error && styles.inputError]}

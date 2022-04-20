@@ -1,6 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { object } from 'prop-types';
 
 import LoginForm from 'components/LoginForm';
@@ -31,19 +31,20 @@ const LoginScreen = ({ navigation }) => {
 
           <View style={styles.formContainer}>
             <LoginForm onSubmit={loginRequest} />
-            <Text testID="forgot-password" style={styles.forgotPassword} onPress={handleLogin}>
-              {strings.LOG_IN.forgotPassword}
-            </Text>
-            <Text testID="connect-with-facebook" style={styles.connectFacebook} onPress={() => {}}>
-              {CONNECT_FACEBOOK_TEXT}
-            </Text>
+            <TouchableOpacity testID="forgot-password" onPress={handleLogin}>
+              <Text style={styles.forgotPassword}>{strings.LOG_IN.forgotPassword}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity testID="connect-with-facebook" onPress={() => {}}>
+              <Text style={styles.connectFacebook}>{CONNECT_FACEBOOK_TEXT}</Text>
+            </TouchableOpacity>
           </View>
 
           <View>
             <View style={styles.line} />
-            <Text testID="sign-up-button" style={styles.signUpButton} onPress={handleLogin}>
-              {SIGN_UP_TITLE}
-            </Text>
+            <TouchableOpacity testID="sign-up-button" onPress={handleLogin}>
+              <Text style={styles.signUpButton}>{SIGN_UP_TITLE}</Text>
+            </TouchableOpacity>
           </View>
         </SafeAreaView>
       </ImageBackground>

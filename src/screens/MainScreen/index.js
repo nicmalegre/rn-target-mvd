@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import { logout } from 'actions/userActions';
@@ -19,9 +19,9 @@ const MainScreen = () => {
   return (
     <View style={styles.container} testID={MAIN_SCREEN}>
       <Text>Hey{` ${email}` || ''}, you&#39;re logged in!</Text>
-      <Text testID="logout-button" style={styles.logoutButton} onPress={logoutRequest}>
-        {strings.MAIN_SCREEN.logout.toLocaleUpperCase()}
-      </Text>
+      <TouchableOpacity testID="logout-button" onPress={logoutRequest}>
+        <Text style={styles.logoutButton}>{strings.MAIN_SCREEN.logout.toLocaleUpperCase()}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

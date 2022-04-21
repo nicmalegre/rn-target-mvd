@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: BLACK,
     fontFamily: PRIMARY_FONT_BOLD,
+    textTransform: 'uppercase',
   },
   image: {
     flex: 1,
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     marginTop: 22,
     lineHeight: 14,
     letterSpacing: 2.4,
+    textTransform: 'uppercase',
   },
   line: {
     borderTopColor: 'black',
@@ -58,6 +60,7 @@ const styles = StyleSheet.create({
     lineHeight: 13,
     letterSpacing: 1.65,
     textAlign: 'center',
+    textTransform: 'uppercase',
   },
 });
 

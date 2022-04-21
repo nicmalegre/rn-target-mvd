@@ -11,10 +11,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 import styles from './styles';
 
-const LOG_IN_TITLE = strings.LOG_IN.title.toUpperCase();
-const CONNECT_FACEBOOK_TEXT = strings.LOG_IN.connectFacebook.toUpperCase();
-const SIGN_UP_TITLE = strings.SIGN_UP.title.toUpperCase();
-
 const LoginScreen = ({ navigation }) => {
   const dispatch = useDispatch();
   const loginRequest = useCallback(user => dispatch(login(user)), [dispatch]);
@@ -27,7 +23,7 @@ const LoginScreen = ({ navigation }) => {
         resizeMode="cover"
         style={styles.image}>
         <SafeAreaView style={styles.subcontainer}>
-          <Text style={styles.targetTitle}>{LOG_IN_TITLE}</Text>
+          <Text style={styles.targetTitle}>{strings.LOG_IN.title}</Text>
 
           <View style={styles.formContainer}>
             <LoginForm onSubmit={loginRequest} />
@@ -35,15 +31,16 @@ const LoginScreen = ({ navigation }) => {
               <Text style={styles.forgotPassword}>{strings.LOG_IN.forgotPassword}</Text>
             </TouchableOpacity>
 
+            {/* TODO: Integrate facebook and execute the correct function onPress */}
             <TouchableOpacity testID="connect-with-facebook" onPress={() => {}}>
-              <Text style={styles.connectFacebook}>{CONNECT_FACEBOOK_TEXT}</Text>
+              <Text style={styles.connectFacebook}>{strings.LOG_IN.connectFacebook}</Text>
             </TouchableOpacity>
           </View>
 
           <View>
             <View style={styles.line} />
             <TouchableOpacity testID="sign-up-button" onPress={handleLogin}>
-              <Text style={styles.signUpButton}>{SIGN_UP_TITLE}</Text>
+              <Text style={styles.signUpButton}>{strings.SIGN_UP.title}</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>

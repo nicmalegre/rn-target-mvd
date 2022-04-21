@@ -20,7 +20,7 @@ const MainScreen = () => {
     <View style={styles.container} testID={MAIN_SCREEN}>
       <Text>Hey{` ${email}` || ''}, you&#39;re logged in!</Text>
       <TouchableOpacity testID="logout-button" onPress={logoutRequest}>
-        <Text style={styles.logoutButton}>{strings.MAIN_SCREEN.logout.toLocaleUpperCase()}</Text>
+        <Text style={styles.logoutButton}>{strings.MAIN_SCREEN.logout}</Text>
       </TouchableOpacity>
     </View>
   );

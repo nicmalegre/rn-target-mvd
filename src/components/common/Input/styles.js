@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.65,
     marginBottom: 4,
     color: BLACK,
+    textTransform: 'uppercase',
   },
   viewInput: {
     alignItems: 'center',

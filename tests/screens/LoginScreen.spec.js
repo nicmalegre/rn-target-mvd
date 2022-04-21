@@ -65,9 +65,9 @@ describe('<LoginScreen />', () => {
           );
         fireEvent.press(wrapper.queryByTestId('login-submit-button'));
 
-        const text = 'LOADING';
+        const loadingTextId = 'loading-text-button';
         expect(wrapper.queryAllByLabelText('form-error')).toEqual([]);
-        await waitFor(() => expect(wrapper.queryByText(text)).toBeNull());
+        await waitFor(() => expect(wrapper.queryByTestId(loadingTextId)).toBeNull());
       });
     });
 

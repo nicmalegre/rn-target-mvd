@@ -73,7 +73,6 @@ const LoginForm = ({ onSubmit }) => {
         onPress={handleSubmit}
         disabled={formHasErrors}
         style={styles.button}>
-        {/* <Text style={styles.buttonTitle}>{status === LOADING ? strings.COMMON.loading : strings.SIGN_IN.button}</Text> */}
         {status === LOADING ? (
           <Text testID="loading-text-button" style={styles.buttonTitle}>
             {strings.COMMON.loading}

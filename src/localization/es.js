@@ -12,7 +12,7 @@ export default {
   },
 
   SIGN_UP: {
-    title: 'Registro',
+    title: 'Target MVD',
     email: 'Email',
     password: 'Contraseña',
     passwordConfirmation: 'Repetir contraseña',

@@ -17,7 +17,7 @@ export default {
   },
 
   SIGN_UP: {
-    title: 'Sign up',
+    title: 'Target MVD',
     email: 'Email',
     password: 'Password',
     passwordConfirmation: 'Password confirmation',

@@ -1,6 +1,5 @@
 import React from 'react';
 import { func } from 'prop-types';
-import { Button, View } from 'react-native';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
 import { signUp } from 'actions/userActions';
@@ -11,12 +10,14 @@ import useValidation from 'hooks/useValidation';
 import useTextInputProps from 'hooks/useTextInputProps';
 import signUpValidations from 'validations/signUpValidations';
 import ErrorView from 'components/common/ErrorView';
-import styles from './styles';
+import Button from 'components/common/Button';
 
 const FIELDS = {
+  name: 'name',
   email: 'email',
   password: 'password',
   passwordConfirmation: 'passwordConfirmation',
+  gender: 'gender',
 };
 
 const SignUpForm = ({ onSubmit }) => {
@@ -55,6 +56,12 @@ const SignUpForm = ({ onSubmit }) => {
   return (
     <>
       <Input
+        label={strings.SIGN_UP.name}
+        autoCapitalize="none"
+        testID="name-input"
+        {...inputProps(FIELDS.name)}
+      />
+      <Input
         label={strings.SIGN_UP.email}
         keyboardType="email-address"
         autoCapitalize="none"
@@ -73,15 +80,20 @@ const SignUpForm = ({ onSubmit }) => {
         testID="confirm-password-input"
         {...inputProps(FIELDS.passwordConfirmation)}
       />
+      <Input
+        label={strings.SIGN_UP.gender}
+        autoCapitalize="none"
+        testID="confirm-password-input"
+        {...inputProps(FIELDS.gender)}
+      />
+
       <ErrorView errors={{ error }} />
-      <View style={styles.button}>
-        <Button
-          testID="signup-submit-button"
-          title={status === LOADING ? strings.COMMON.loading : strings.SIGN_UP.button}
-          onPress={handleSubmit}
-          disabled={formHasErrors}
-        />
-      </View>
+      <Button
+        testID="signup-submit-button"
+        title={status === LOADING ? strings.COMMON.loading : strings.SIGN_UP.button}
+        onPress={handleSubmit}
+        disabled={formHasErrors}
+      />
     </>
   );
 };

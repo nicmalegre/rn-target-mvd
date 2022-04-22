@@ -18,9 +18,11 @@ export default {
 
   SIGN_UP: {
     title: 'Target MVD',
+    name: 'Name',
     email: 'Email',
     password: 'Password',
     passwordConfirmation: 'Password confirmation',
+    gender: 'Gender',
     button: 'Sign up',
   },
 

@@ -18,11 +18,6 @@ const FIELDS = {
   password: 'password',
 };
 
-const EMAIL_LABEL = strings.SIGN_IN.email.toUpperCase();
-const PASSWORD_LABEL = strings.SIGN_IN.password.toUpperCase();
-const LOADING_TEXT = strings.COMMON.loading.toUpperCase();
-const SIGN_IN_TEXT = strings.SIGN_IN.button.toUpperCase();
-
 const LoginForm = ({ onSubmit }) => {
   const { error, status } = useStatus(login);
   const validator = useValidation(loginValidations);
@@ -59,14 +54,14 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <>
       <Input
-        label={EMAIL_LABEL}
+        label={strings.SIGN_IN.email}
         keyboardType="email-address"
         autoCapitalize="none"
         testID="email-input"
         {...inputProps(FIELDS.email)}
       />
       <Input
-        label={PASSWORD_LABEL}
+        label={strings.SIGN_IN.password}
         testID="password-input"
         secureTextEntry
         {...inputProps(FIELDS.password)}
@@ -78,7 +73,15 @@ const LoginForm = ({ onSubmit }) => {
         onPress={handleSubmit}
         disabled={formHasErrors}
         style={styles.button}>
-        <Text style={styles.buttonTitle}>{status === LOADING ? LOADING_TEXT : SIGN_IN_TEXT}</Text>
+        {status === LOADING ? (
+          <Text testID="loading-text-button" style={styles.buttonTitle}>
+            {strings.COMMON.loading}
+          </Text>
+        ) : (
+          <Text testID="sign-in-text-button" style={styles.buttonTitle}>
+            {strings.SIGN_IN.button}
+          </Text>
+        )}
       </TouchableOpacity>
     </>
   );

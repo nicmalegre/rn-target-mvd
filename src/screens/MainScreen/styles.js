@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.65,
     textAlign: 'center',
     marginTop: 20,
+    textTransform: 'uppercase',
   },
 });
 

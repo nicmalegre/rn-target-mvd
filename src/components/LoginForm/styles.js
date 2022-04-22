@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     lineHeight: 13,
     letterSpacing: 1.65,
     color: WHITE,
+    textTransform: 'uppercase',
   },
 });
 

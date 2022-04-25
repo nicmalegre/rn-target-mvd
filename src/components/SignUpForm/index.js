@@ -89,6 +89,7 @@ const SignUpForm = ({ onSubmit }) => {
         label={strings.SIGN_UP.password}
         secureTextEntry
         testID="password-input"
+        placeholder={strings.SIGN_UP.passwordPlaceholder}
         {...inputProps(FIELDS.password)}
       />
       <Input

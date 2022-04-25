@@ -4,7 +4,17 @@ import { View, Text } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import styles, { pickerSelectStyles } from './styles';
 
-const Picker = ({ label, placeholder, items, value, onValueChange, touched, error, ...props }) => (
+const Picker = ({
+  label,
+  placeholder,
+  items,
+  value,
+  onValueChange,
+  touchableWrapperTestId,
+  touched,
+  error,
+  ...props
+}) => (
   <View style={styles.container}>
     {!!label && <Text style={styles.label}>{label}</Text>}
     <View style={styles.viewPicker}>
@@ -14,6 +24,7 @@ const Picker = ({ label, placeholder, items, value, onValueChange, touched, erro
         items={items}
         value={value}
         onValueChange={onValueChange}
+        touchableWrapperProps={{ testID: touchableWrapperTestId }}
         {...props}
       />
 
@@ -32,6 +43,7 @@ Picker.propTypes = {
   items: arrayOf(object).isRequired,
   value: string,
   onValueChange: func.isRequired,
+  touchableWrapperTestId: string,
   touched: bool.isRequired,
   error: string,
 };

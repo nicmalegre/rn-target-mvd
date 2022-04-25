@@ -167,9 +167,11 @@ describe('<SignUpForm />', () => {
 
     describe('and the form is valid', () => {
       beforeEach(() => {
+        fireEvent.changeText(wrapper.queryByTestId('name-input'), 'name');
         fireEvent.changeText(wrapper.queryByTestId('email-input'), 'example@rootstrap.com');
         fireEvent.changeText(wrapper.queryByTestId('password-input'), 'password');
         fireEvent.changeText(wrapper.queryByTestId('confirm-password-input'), 'password');
+        fireEvent(wrapper.queryByTestId('gender-picker'), 'onValueChange', 'male');
         fireEvent.press(submitButton);
       });
 

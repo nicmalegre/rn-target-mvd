@@ -114,6 +114,7 @@ const SignUpForm = ({ onSubmit }) => {
             : errors[FIELDS.gender] || ''
         }
         touched={touched[FIELDS.gender] || false}
+        touchableWrapperTestId="gender-picker"
       />
 
       <ErrorView errors={{ error }} />

@@ -37,9 +37,11 @@ describe('<SignUpScreen />', () => {
 
   describe('when the user submits the form', () => {
     beforeEach(() => {
+      fireEvent.changeText(wrapper.queryByTestId('name-input'), 'name');
       fireEvent.changeText(wrapper.queryByTestId('email-input'), 'example@rootstrap.com');
       fireEvent.changeText(wrapper.queryByTestId('password-input'), 'password');
       fireEvent.changeText(wrapper.queryByTestId('confirm-password-input'), 'password');
+      fireEvent(wrapper.queryByTestId('gender-picker'), 'onValueChange', 'male');
     });
 
     it('should show the loading spinner', async () => {

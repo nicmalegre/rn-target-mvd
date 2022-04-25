@@ -24,6 +24,12 @@ export default {
     passwordConfirmation: 'Password confirmation',
     gender: 'Gender',
     button: 'Sign up',
+    picker: {
+      label: 'Select your gender',
+      male: 'Male',
+      female: 'Female',
+      other: 'Other',
+    },
   },
 
   LOG_IN: {

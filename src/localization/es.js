@@ -17,6 +17,12 @@ export default {
     password: 'Contraseña',
     passwordConfirmation: 'Repetir contraseña',
     button: 'Iniciar sesión',
+    picker: {
+      label: 'Selecciona tu género',
+      male: 'Masculino',
+      female: 'Femenino',
+      other: 'Otro',
+    },
   },
 
   LOG_IN: {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { func } from 'prop-types';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
@@ -12,6 +12,10 @@ import signUpValidations from 'validations/signUpValidations';
 import ErrorView from 'components/common/ErrorView';
 import Button from 'components/common/Button';
 
+import { BLACK } from 'constants/colors';
+
+import Picker from 'components/common/Picker';
+
 const FIELDS = {
   name: 'name',
   email: 'email',
@@ -20,9 +24,22 @@ const FIELDS = {
   gender: 'gender',
 };
 
+const PLACEHOLDER_PICKER = {
+  label: strings.SIGN_UP.picker.label.toUpperCase(),
+  value: '',
+  color: BLACK,
+};
+
+const GENDER_LABELS = [
+  { label: strings.SIGN_UP.picker.male, value: 'male' },
+  { label: strings.SIGN_UP.picker.female, value: 'female' },
+  { label: strings.SIGN_UP.picker.other, value: 'other' },
+];
+
 const SignUpForm = ({ onSubmit }) => {
   const { error, status } = useStatus(signUp);
   const validator = useValidation(signUpValidations);
+  const [gender, setGender] = useState('');
   const {
     values,
     errors,
@@ -80,11 +97,23 @@ const SignUpForm = ({ onSubmit }) => {
         testID="confirm-password-input"
         {...inputProps(FIELDS.passwordConfirmation)}
       />
-      <Input
+
+      <Picker
         label={strings.SIGN_UP.gender}
-        autoCapitalize="none"
-        testID="confirm-password-input"
-        {...inputProps(FIELDS.gender)}
+        onValueChange={value => {
+          setGender(value);
+          handleValueChange(FIELDS.gender, value);
+        }}
+        value={gender}
+        items={GENDER_LABELS}
+        placeholder={PLACEHOLDER_PICKER}
+        onClose={() => handleBlur(FIELDS.gender)}
+        error={
+          Array.isArray(errors[FIELDS.gender])
+            ? errors[FIELDS.gender][0]
+            : errors[FIELDS.gender] || ''
+        }
+        touched={touched[FIELDS.gender] || false}
       />
 
       <ErrorView errors={{ error }} />

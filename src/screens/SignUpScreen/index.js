@@ -30,7 +30,7 @@ const SignUpScreen = memo(({ navigation }) => {
 
           <View>
             <View style={styles.line} />
-            <TouchableOpacity onPress={() => navigation.goBack()}>
+            <TouchableOpacity onPress={navigation.goBack}>
               <Text style={styles.signInButton}>{strings.SIGN_IN.title}</Text>
             </TouchableOpacity>
           </View>

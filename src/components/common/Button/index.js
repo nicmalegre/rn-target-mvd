@@ -3,9 +3,9 @@ import { string } from 'prop-types';
 import { TouchableOpacity, Text } from 'react-native';
 import styles from './styles';
 
-const Button = ({ title, testId, ...props }) => {
+const Button = ({ title, testID, ...props }) => {
   return (
-    <TouchableOpacity style={styles.button} testID={testId} {...props}>
+    <TouchableOpacity style={styles.button} testID={testID} {...props}>
       <Text style={styles.buttonTitle}>{title}</Text>
     </TouchableOpacity>
   );
@@ -13,11 +13,11 @@ const Button = ({ title, testId, ...props }) => {
 
 Button.propTypes = {
   title: string.isRequired,
-  testId: string,
+  testID: string,
 };
 
 Button.defaultProps = {
-  testId: 'submit-button',
+  testID: 'submit-button',
 };
 
 export default Button;

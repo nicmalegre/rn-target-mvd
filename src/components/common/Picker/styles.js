@@ -2,7 +2,7 @@ import { BLACK, ERROR } from 'constants/colors';
 import { PRIMARY_FONT_SEMI_BOLD } from 'constants/fonts';
 import { StyleSheet } from 'react-native';
 
-export const pickerSelectStyles = isError =>
+export const stylesPicker = isError =>
   StyleSheet.create({
     inputIOS: {
       fontFamily: PRIMARY_FONT_SEMI_BOLD,
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     lineHeight: 12,
     color: ERROR,
     marginTop: 4,
+    textAlign: 'center',
   },
 });
 

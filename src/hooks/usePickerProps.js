@@ -17,9 +17,9 @@ export default (
       active: !!activeFields[fieldKey],
       // Has been touched?
       touched: !!touchedFields[fieldKey],
-      onChangeText: (text, isInitialSetup) => handleValueChange(fieldKey, text, isInitialSetup),
-      onFocus: () => handleFocus(fieldKey),
-      onBlur: () => handleBlur(fieldKey),
+      onValueChange: (value, isInitialSetup) => handleValueChange(fieldKey, value, isInitialSetup),
+      onOpen: () => handleFocus(fieldKey),
+      onClose: () => handleBlur(fieldKey),
     }),
     [handleFocus, handleBlur, handleValueChange, values, errors, activeFields, touchedFields],
   );

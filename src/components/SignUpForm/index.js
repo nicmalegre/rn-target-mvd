@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { func } from 'prop-types';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
 
@@ -8,6 +8,7 @@ import strings from 'localization';
 import useForm from 'hooks/useForm';
 import useValidation from 'hooks/useValidation';
 import useTextInputProps from 'hooks/useTextInputProps';
+import usePickerProps from 'hooks/usePickerProps';
 import signUpValidations from 'validations/signUpValidations';
 import ErrorView from 'components/common/ErrorView';
 import Button from 'components/common/Button';
@@ -39,7 +40,6 @@ const GENDER_LABELS = [
 const SignUpForm = ({ onSubmit }) => {
   const { error, status } = useStatus(signUp);
   const validator = useValidation(signUpValidations);
-  const [gender, setGender] = useState('');
   const {
     values,
     errors,
@@ -61,6 +61,16 @@ const SignUpForm = ({ onSubmit }) => {
   );
 
   const inputProps = useTextInputProps(
+    handleValueChange,
+    handleFocus,
+    handleBlur,
+    values,
+    errors,
+    activeFields,
+    touched,
+  );
+
+  const pickerProps = usePickerProps(
     handleValueChange,
     handleFocus,
     handleBlur,
@@ -101,21 +111,10 @@ const SignUpForm = ({ onSubmit }) => {
 
       <Picker
         label={strings.SIGN_UP.gender}
-        onValueChange={value => {
-          setGender(value);
-          handleValueChange(FIELDS.gender, value);
-        }}
-        value={gender}
         items={GENDER_LABELS}
         placeholder={PLACEHOLDER_PICKER}
-        onClose={() => handleBlur(FIELDS.gender)}
-        error={
-          Array.isArray(errors[FIELDS.gender])
-            ? errors[FIELDS.gender][0]
-            : errors[FIELDS.gender] || ''
-        }
-        touched={touched[FIELDS.gender] || false}
         touchableWrapperTestId="gender-picker"
+        {...pickerProps(FIELDS.gender)}
       />
 
       <ErrorView errors={{ error }} />

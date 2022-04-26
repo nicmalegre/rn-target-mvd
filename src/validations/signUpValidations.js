@@ -9,13 +9,13 @@ export default {
   password: {
     presence: true,
     length: {
-      minimum: 6,
+      minimum: 8,
     },
   },
   passwordConfirmation: {
     presence: true,
     length: {
-      minimum: 6,
+      minimum: 8,
     },
     equality: { attribute: 'password' },
   },

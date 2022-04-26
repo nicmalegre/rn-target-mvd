@@ -21,7 +21,7 @@ export default {
     name: 'Name',
     email: 'Email',
     password: 'Password',
-    passwordPlaceholder: 'Min. 6 characters long',
+    passwordPlaceholder: 'Min. 8 characters long',
     passwordConfirmation: 'Password confirmation',
     gender: 'Gender',
     button: 'Sign up',

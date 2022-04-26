@@ -15,7 +15,7 @@ export default {
     title: 'Target MVD',
     email: 'Email',
     password: 'Contraseña',
-    passwordPlaceholder: 'Min. 6 caracteres',
+    passwordPlaceholder: 'Min. 8 caracteres',
     passwordConfirmation: 'Repetir contraseña',
     button: 'Iniciar sesión',
     picker: {

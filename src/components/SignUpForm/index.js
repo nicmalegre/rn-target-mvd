@@ -16,6 +16,7 @@ import Button from 'components/common/Button';
 import { BLACK } from 'constants/colors';
 
 import Picker from 'components/common/Picker';
+import useSelectOptions from 'hooks/useSelectOptions';
 
 const FIELDS = {
   name: 'name',
@@ -30,12 +31,6 @@ const PLACEHOLDER_PICKER = {
   value: '',
   color: BLACK,
 };
-
-const GENDER_LABELS = [
-  { label: strings.SIGN_UP.picker.male, value: 'male' },
-  { label: strings.SIGN_UP.picker.female, value: 'female' },
-  { label: strings.SIGN_UP.picker.other, value: 'other' },
-];
 
 const SignUpForm = ({ onSubmit }) => {
   const { error, status } = useStatus(signUp);
@@ -80,6 +75,16 @@ const SignUpForm = ({ onSubmit }) => {
     touched,
   );
 
+  const genderItems = useSelectOptions(
+    [
+      { label: strings.SIGN_UP.picker.male, value: 'male' },
+      { label: strings.SIGN_UP.picker.female, value: 'female' },
+      { label: strings.SIGN_UP.picker.other, value: 'other' },
+    ],
+    'label',
+    'value',
+  );
+
   return (
     <>
       <Input
@@ -111,7 +116,7 @@ const SignUpForm = ({ onSubmit }) => {
 
       <Picker
         label={strings.SIGN_UP.gender}
-        items={GENDER_LABELS}
+        items={genderItems}
         placeholder={PLACEHOLDER_PICKER}
         touchableWrapperTestId="gender-picker"
         {...pickerProps(FIELDS.gender)}

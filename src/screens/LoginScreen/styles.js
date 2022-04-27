@@ -1,6 +1,6 @@
 import { BLACK } from 'constants/colors';
 import { PRIMARY_FONT_BOLD, PRIMARY_FONT_SEMI_BOLD } from 'constants/fonts';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.65,
     textAlign: 'center',
     textTransform: 'uppercase',
+    marginBottom: Platform.OS === 'android' ? 20 : 0,
   },
 });
 

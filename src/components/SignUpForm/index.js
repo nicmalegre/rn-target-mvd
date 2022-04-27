@@ -85,6 +85,8 @@ const SignUpForm = ({ onSubmit }) => {
     'value',
   );
 
+  const isLoading = status === LOADING;
+
   return (
     <>
       <Input
@@ -125,9 +127,9 @@ const SignUpForm = ({ onSubmit }) => {
       <ErrorView errors={{ error }} />
       <Button
         testID="signup-submit-button"
-        title={status === LOADING ? strings.COMMON.loading : strings.SIGN_UP.button}
+        title={isLoading ? strings.COMMON.loading : strings.SIGN_UP.button}
         onPress={handleSubmit}
-        disabled={formHasErrors}
+        disabled={formHasErrors || isLoading}
       />
     </>
   );

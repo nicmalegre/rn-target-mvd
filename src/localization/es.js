@@ -13,6 +13,7 @@ export default {
 
   SIGN_UP: {
     title: 'Target MVD',
+    name: 'Nombre',
     email: 'Email',
     password: 'Contraseña',
     passwordPlaceholder: 'Min. 8 caracteres',

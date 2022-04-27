@@ -40,7 +40,7 @@ const LoginScreen = ({ navigation }) => {
           <View>
             <View style={styles.line} />
             <TouchableOpacity testID="sign-up-button" onPress={handleLogin}>
-              <Text style={styles.signUpButton}>{strings.SIGN_UP.title}</Text>
+              <Text style={styles.signUpButton}>{strings.SIGN_UP.button}</Text>
             </TouchableOpacity>
           </View>
         </SafeAreaView>

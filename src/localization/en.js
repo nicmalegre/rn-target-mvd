@@ -17,11 +17,20 @@ export default {
   },
 
   SIGN_UP: {
-    title: 'Sign up',
+    title: 'Target MVD',
+    name: 'Name',
     email: 'Email',
     password: 'Password',
+    passwordPlaceholder: 'Min. 8 characters long',
     passwordConfirmation: 'Password confirmation',
+    gender: 'Gender',
     button: 'Sign up',
+    picker: {
+      label: 'Select your gender',
+      male: 'Male',
+      female: 'Female',
+      other: 'Other',
+    },
   },
 
   LOG_IN: {

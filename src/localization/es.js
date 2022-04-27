@@ -12,11 +12,19 @@ export default {
   },
 
   SIGN_UP: {
-    title: 'Registro',
+    title: 'Target MVD',
+    name: 'Nombre',
     email: 'Email',
     password: 'Contraseña',
+    passwordPlaceholder: 'Min. 8 caracteres',
     passwordConfirmation: 'Repetir contraseña',
     button: 'Iniciar sesión',
+    picker: {
+      label: 'Selecciona tu género',
+      male: 'Masculino',
+      female: 'Femenino',
+      other: 'Otro',
+    },
   },
 
   LOG_IN: {

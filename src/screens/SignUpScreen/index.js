@@ -10,6 +10,7 @@ import strings from 'localization';
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import KeyboardAreaView from 'components/common/KeyboardAreaView';
+import Spacer from 'components/common/Spacer';
 import styles from './styles';
 
 const SignUpScreen = memo(({ navigation }) => {
@@ -31,7 +32,7 @@ const SignUpScreen = memo(({ navigation }) => {
             </View>
 
             <View>
-              <View style={styles.line} />
+              <Spacer />
               <TouchableOpacity onPress={navigation.goBack}>
                 <Text style={styles.signInButton}>{strings.SIGN_IN.title}</Text>
               </TouchableOpacity>

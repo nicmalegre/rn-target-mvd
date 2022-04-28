@@ -10,6 +10,7 @@ import { SIGN_UP_SCREEN, LOGIN_SCREEN } from 'constants/screens';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 import KeyboardAreaView from 'components/common/KeyboardAreaView';
+import Spacer from 'components/common/Spacer';
 import styles from './styles';
 
 const LoginScreen = ({ navigation }) => {
@@ -40,7 +41,7 @@ const LoginScreen = ({ navigation }) => {
             </View>
 
             <View>
-              <View style={styles.line} />
+              <Spacer />
               <TouchableOpacity testID="sign-up-button" onPress={handleLogin}>
                 <Text style={styles.signUpButton}>{strings.SIGN_UP.button}</Text>
               </TouchableOpacity>

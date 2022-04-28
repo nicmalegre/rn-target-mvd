@@ -48,12 +48,6 @@ const styles = StyleSheet.create({
     letterSpacing: 2.4,
     textTransform: 'uppercase',
   },
-  line: {
-    borderTopColor: 'black',
-    borderTopWidth: 1,
-    marginVertical: 15,
-    marginHorizontal: 50,
-  },
   signUpButton: {
     fontFamily: PRIMARY_FONT_SEMI_BOLD,
     fontSize: 11,

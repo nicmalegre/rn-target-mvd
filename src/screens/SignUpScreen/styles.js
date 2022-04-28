@@ -32,12 +32,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  line: {
-    borderTopColor: 'black',
-    borderTopWidth: 1,
-    marginVertical: 15,
-    marginHorizontal: 50,
-  },
   signInButton: {
     fontFamily: PRIMARY_FONT_SEMI_BOLD,
     fontSize: 11,

@@ -8,7 +8,10 @@ import MainScreen from 'screens/MainScreen';
 const Stack = createStackNavigator();
 
 const AppStack = () => (
-  <Stack.Navigator>
+  <Stack.Navigator
+    screenOptions={{
+      headerShown: false,
+    }}>
     <Stack.Screen name={MAIN_SCREEN} component={MainScreen} />
   </Stack.Navigator>
 );

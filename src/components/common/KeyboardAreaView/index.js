@@ -1,12 +1,13 @@
 import React from 'react';
-import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, ScrollView } from 'react-native';
 import { object, element } from 'prop-types';
+import { IS_IOS } from 'constants/platforms';
 import styles from './styles';
 
 const KeyboardAreaView = ({ children, styleContainer, styleContentScrollView, ...props }) => {
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      behavior={IS_IOS ? 'padding' : 'height'}
       style={[styles.keyboardAvoidingView, styleContainer]}
       {...props}>
       <ScrollView contentContainerStyle={[styles.scrollView, styleContentScrollView]}>

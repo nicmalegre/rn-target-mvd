@@ -1,24 +1,19 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
+import { element, object } from 'prop-types';
 import Header from '../Header';
 import styles from './styles';
 
-const Container = ({ children, headerProps }) => {
-  const { testID, title, imageLeft, onPressIconLeft, imageRight, onPressIconRight } =
-    headerProps || {};
-  return (
-    <SafeAreaView style={styles.container}>
-      <Header
-        testID={testID}
-        title={title}
-        imageLeft={imageLeft}
-        onPressIconLeft={onPressIconLeft}
-        imageRight={imageRight}
-        onPressIconRight={onPressIconRight}
-      />
-      {children}
-    </SafeAreaView>
-  );
+const Container = ({ children, headerProps }) => (
+  <SafeAreaView style={styles.container}>
+    <Header {...headerProps} />
+    {children}
+  </SafeAreaView>
+);
+
+Container.propTypes = {
+  children: element.isRequired,
+  headerProps: object.isRequired,
 };
 
 export default Container;

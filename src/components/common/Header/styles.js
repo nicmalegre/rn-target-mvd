@@ -10,11 +10,6 @@ const styles = StyleSheet.create({
     height: 60,
     backgroundColor: WHITE,
   },
-  icon: {
-    marginHorizontal: 16,
-    marginVertical: 8,
-    marginRight: 10,
-  },
   title: {
     fontFamily: PRIMARY_FONT_SEMI_BOLD,
     fontWeight: '600',

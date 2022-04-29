@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     paddingHorizontal: 50,
+    paddingBottom: 20,
   },
   formContainer: {
     flex: 1,
@@ -46,12 +47,6 @@ const styles = StyleSheet.create({
     lineHeight: 14,
     letterSpacing: 2.4,
     textTransform: 'uppercase',
-  },
-  line: {
-    borderTopColor: 'black',
-    borderTopWidth: 1,
-    marginVertical: 15,
-    marginHorizontal: 50,
   },
   signUpButton: {
     fontFamily: PRIMARY_FONT_SEMI_BOLD,

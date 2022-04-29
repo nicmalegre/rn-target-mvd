@@ -9,6 +9,8 @@ import { signUp } from 'actions/userActions';
 import strings from 'localization';
 import ImageBackground from 'react-native/Libraries/Image/ImageBackground';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import KeyboardAreaView from 'components/common/KeyboardAreaView';
+import Spacer from 'components/common/Spacer';
 import styles from './styles';
 
 const SignUpScreen = memo(({ navigation }) => {
@@ -17,25 +19,27 @@ const SignUpScreen = memo(({ navigation }) => {
 
   return (
     <View style={styles.container} testID={SIGN_UP_SCREEN}>
-      <ImageBackground
-        source={require('assets/images/logos/login-background.png')}
-        resizeMode="cover"
-        style={styles.image}>
-        <SafeAreaView style={styles.subcontainer}>
-          <Text style={styles.targetTitle}>{strings.SIGN_UP.title}</Text>
+      <KeyboardAreaView>
+        <ImageBackground
+          source={require('assets/images/logos/login-background.png')}
+          resizeMode="cover"
+          style={styles.image}>
+          <SafeAreaView style={styles.subcontainer}>
+            <Text style={styles.targetTitle}>{strings.SIGN_UP.title}</Text>
 
-          <View style={styles.formContainer}>
-            <SignUpForm onSubmit={signUpRequest} />
-          </View>
+            <View style={styles.formContainer}>
+              <SignUpForm onSubmit={signUpRequest} />
+            </View>
 
-          <View>
-            <View style={styles.line} />
-            <TouchableOpacity onPress={navigation.goBack}>
-              <Text style={styles.signInButton}>{strings.SIGN_IN.title}</Text>
-            </TouchableOpacity>
-          </View>
-        </SafeAreaView>
-      </ImageBackground>
+            <View>
+              <Spacer />
+              <TouchableOpacity onPress={navigation.goBack}>
+                <Text style={styles.signInButton}>{strings.SIGN_IN.title}</Text>
+              </TouchableOpacity>
+            </View>
+          </SafeAreaView>
+        </ImageBackground>
+      </KeyboardAreaView>
     </View>
   );
 });

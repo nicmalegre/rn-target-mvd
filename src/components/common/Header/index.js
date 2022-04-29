@@ -1,9 +1,8 @@
+import React from 'react';
+import { View, Text, TouchableHighlight, Image } from 'react-native';
 import { WHITE } from 'constants/colors';
 import { CHAT_ICON, BACK_ARROW_ICON } from 'constants/icons';
 import { func, object, number, string } from 'prop-types';
-
-import React from 'react';
-import { View, Text, TouchableHighlight, Image } from 'react-native';
 import styles from './styles';
 
 const Header = ({

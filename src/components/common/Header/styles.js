@@ -1,6 +1,6 @@
+import { StyleSheet } from 'react-native';
 import { BLACK, WHITE } from 'constants/colors';
 import { PRIMARY_FONT_SEMI_BOLD } from 'constants/fonts';
-import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   header: {

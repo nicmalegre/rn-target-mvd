@@ -3,11 +3,11 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { useDispatch } from 'react-redux';
 
 import { logout } from 'actions/userActions';
-import { MAIN_SCREEN } from 'constants/screens';
 import strings from 'localization';
 import useSession from 'hooks/useSession';
 import Container from 'components/common/Container';
 import { PROFILE_ICON } from 'constants/icons';
+import { MAIN_SCREEN } from 'constants/screens';
 import styles from './styles';
 
 const MainScreen = () => {

@@ -13,7 +13,7 @@ export default {
 
   MAIN_SCREEN: {
     logout: 'Sign out',
-    title: 'Home Screen',
+    title: 'Target Points',
   },
 
   SIGN_UP: {

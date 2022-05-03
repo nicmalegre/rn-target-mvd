@@ -1,24 +1,15 @@
-import React, { useCallback } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { View } from 'react-native';
 
-import { logout } from 'actions/userActions';
 import strings from 'localization';
-import useSession from 'hooks/useSession';
 import Container from 'components/common/Container';
 import { PROFILE_ICON } from 'constants/icons';
 import { MAIN_SCREEN } from 'constants/screens';
 import NewTargetBar from 'components/NewTargetBar';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import styles from './styles';
 
 const MainScreen = () => {
-  const dispatch = useDispatch();
-  const logoutRequest = useCallback(() => dispatch(logout()), [dispatch]);
-
-  const {
-    user: { email },
-  } = useSession();
-
   return (
     <Container
       headerProps={{
@@ -30,10 +21,15 @@ const MainScreen = () => {
       }}>
       <View style={styles.container} testID={MAIN_SCREEN}>
         <View style={styles.mapContainer}>
-          <Text>Hey{` ${email}` || ''}, you&#39;re logged in!</Text>
-          <TouchableOpacity testID="logout-button" onPress={logoutRequest}>
-            <Text style={styles.logoutButton}>{strings.MAIN_SCREEN.logout}</Text>
-          </TouchableOpacity>
+          <MapView
+            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+            style={styles.map}
+            region={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.015,
+              longitudeDelta: 0.0121,
+            }}></MapView>
         </View>
 
         {/* TO DO: Add feature to create new target onPress */}

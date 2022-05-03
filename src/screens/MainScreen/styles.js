@@ -7,8 +7,9 @@ const styles = StyleSheet.create({
   },
   mapContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
   logoutButton: {
     fontFamily: PRIMARY_FONT_SEMI_BOLD,

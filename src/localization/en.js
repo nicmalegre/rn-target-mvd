@@ -14,6 +14,7 @@ export default {
   MAIN_SCREEN: {
     logout: 'Sign out',
     title: 'Target Points',
+    newTarget: 'Create new target',
   },
 
   SIGN_UP: {

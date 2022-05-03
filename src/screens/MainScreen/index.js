@@ -22,7 +22,7 @@ const MainScreen = () => {
       <View style={styles.container} testID={MAIN_SCREEN}>
         <View style={styles.mapContainer}>
           <MapView
-            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+            provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
               latitude: 37.78825,

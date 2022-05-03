@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { element, object } from 'prop-types';
 import Header from '../Header';
 import styles from './styles';

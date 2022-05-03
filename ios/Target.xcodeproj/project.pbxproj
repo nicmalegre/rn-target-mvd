@@ -143,6 +143,7 @@
 		A8AA8F96082A43D09A416901 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		AE813CB51EC34F69CEDF757B /* Pods-Target-TargetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Target-TargetTests.debug.xcconfig"; path = "Target Support Files/Pods-Target-TargetTests/Pods-Target-TargetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1521D93B20E496884D3BF81 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		B40A599F282181F300FF4BC1 /* rn-geolocation-service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "rn-geolocation-service.swift"; sourceTree = "<group>"; };
 		B4ED01B0271F6BF000500CC0 /* Target-QA-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Target-QA-Info.plist"; sourceTree = "<group>"; };
 		BCBE4D2FF24B5063CC5F5435 /* libPods-Target-TargetTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Target-TargetTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD5B503BD79A55A7F689AE52 /* Pods-Target-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Target-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Target-tvOSTests/Pods-Target-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 				2D7C75E124C2820E00CBB15B /* Target-Bridging-Header.h */,
 				2D7C75E224C2820E00CBB15B /* Target-Staging-Bridging-Header.h */,
 				2D7C75E324C2820E00CBB15B /* Target-Develop-Bridging-Header.h */,
+				B40A599F282181F300FF4BC1 /* rn-geolocation-service.swift */,
 			);
 			name = Target;
 			sourceTree = "<group>";

@@ -7565,6 +7565,11 @@ react-native-flipper@^0.54.0:
   resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.54.0.tgz#520a6cd99ebfd52db687564db0eea83ab7648b80"
   integrity sha512-xRHtE8/t2c4i/5o8+xe5vEXHmt5s7a5aetYOoRkv9lKebWSu+b8/mhd7SnZonXtMsGqouzKRyFdqC7x45rLwWw==
 
+react-native-geolocation-service@^5.3.0-beta.4:
+  version "5.3.0-beta.4"
+  resolved "https://registry.yarnpkg.com/react-native-geolocation-service/-/react-native-geolocation-service-5.3.0-beta.4.tgz#8061396f734028b0ecbf8316a2cda9179df19210"
+  integrity sha512-8Z/FP1ls02fnvqXCII+dDS329lP3UigNR4eIHUjPQdHu/DRGMRCpJJuj05hcq37UJL/zVVsXnPFdLA9lCOWYCQ==
+
 react-native-gesture-handler@^1.10.3:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz#942bbf2963bbf49fa79593600ee9d7b5dab3cfc0"

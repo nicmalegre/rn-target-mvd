@@ -6,10 +6,13 @@ import Container from 'components/common/Container';
 import { PROFILE_ICON } from 'constants/icons';
 import { MAIN_SCREEN } from 'constants/screens';
 import NewTargetBar from 'components/NewTargetBar';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import useUserLocation from 'hooks/useUserLocation';
 import styles from './styles';
 
 const MainScreen = () => {
+  const { userLocation } = useUserLocation();
+
   return (
     <Container
       headerProps={{
@@ -25,11 +28,19 @@ const MainScreen = () => {
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: 37.78825,
-              longitude: -122.4324,
+              latitude: userLocation ? userLocation.latitude : 37.78825,
+              longitude: userLocation ? userLocation.longitude : -122.4324,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
-            }}></MapView>
+            }}>
+            {userLocation && (
+              <Marker
+                key="marker"
+                coordinate={{ latitude: userLocation.latitude, longitude: userLocation.longitude }}
+                title="User Location"
+              />
+            )}
+          </MapView>
         </View>
 
         {/* TO DO: Add feature to create new target onPress */}

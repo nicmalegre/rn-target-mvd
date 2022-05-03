@@ -1,4 +1,4 @@
-platform :ios, '11.0'
+platform :ios, '12.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -21,7 +21,8 @@ def flipper_post_install(installer)
 end
 
 def base_pods
-
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
 end
 
 target 'Target' do

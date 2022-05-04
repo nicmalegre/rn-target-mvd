@@ -11,7 +11,7 @@ import useUserLocation from 'hooks/useUserLocation';
 import styles from './styles';
 
 const MainScreen = () => {
-  const { userLocation } = useUserLocation();
+  const { userHasLocation, userLocation } = useUserLocation();
 
   return (
     <Container
@@ -28,12 +28,12 @@ const MainScreen = () => {
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: userLocation ? userLocation.latitude : 37.78825,
-              longitude: userLocation ? userLocation.longitude : -122.4324,
+              latitude: userHasLocation ? userLocation.latitude : 37.78825,
+              longitude: userHasLocation ? userLocation.longitude : -122.4324,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            {userLocation && (
+            {userHasLocation && (
               <Marker
                 key="marker"
                 coordinate={{ latitude: userLocation.latitude, longitude: userLocation.longitude }}

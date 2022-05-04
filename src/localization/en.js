@@ -39,4 +39,10 @@ export default {
     forgotPassword: 'Forgot your password?',
     connectFacebook: 'Connect with facebook',
   },
+
+  LOCATION: {
+    alertText: 'Turn on Location Services to allow "Target" to determine your location.',
+    goToSettings: 'Go to settings',
+    closeButton: "Don't use location",
+  },
 };

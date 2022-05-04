@@ -15,6 +15,7 @@ export default {
     logout: 'Sign out',
     title: 'Target Points',
     newTarget: 'Create new target',
+    markerTitle: 'Your location',
   },
 
   SIGN_UP: {

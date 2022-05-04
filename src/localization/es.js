@@ -15,6 +15,7 @@ export default {
     logout: 'Cerrar sesión',
     title: 'Puntos objetivos',
     newTarget: 'Crear nuevo objetivo',
+    markerTitle: 'Tu ubicación',
   },
 
   SIGN_UP: {

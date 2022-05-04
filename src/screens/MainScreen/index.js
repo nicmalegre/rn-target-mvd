@@ -3,15 +3,17 @@ import { View } from 'react-native';
 
 import strings from 'localization';
 import Container from 'components/common/Container';
-import { PROFILE_ICON } from 'constants/icons';
+import { MAP_MARKER_ICON, PROFILE_ICON } from 'constants/icons';
 import { MAIN_SCREEN } from 'constants/screens';
 import NewTargetBar from 'components/NewTargetBar';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Circle, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import useUserLocation from 'hooks/useUserLocation';
+import { BACKGROUND_CIRCLE_MAP, PRIMARY_COLOR } from 'constants/colors';
 import styles from './styles';
 
 const MainScreen = () => {
   const { userHasLocation, userLocation } = useUserLocation();
+  const { latitude, longitude } = userLocation;
 
   return (
     <Container
@@ -28,17 +30,32 @@ const MainScreen = () => {
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: userHasLocation ? userLocation.latitude : 37.78825,
-              longitude: userHasLocation ? userLocation.longitude : -122.4324,
+              latitude: userHasLocation ? latitude : 37.78825,
+              longitude: userHasLocation ? longitude : -122.4324,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
             {userHasLocation && (
-              <Marker
-                key="marker"
-                coordinate={{ latitude: userLocation.latitude, longitude: userLocation.longitude }}
-                title="User Location"
-              />
+              <>
+                <Marker
+                  key="user-location-marker"
+                  coordinate={{
+                    latitude,
+                    longitude,
+                  }}
+                  title={strings.MAIN_SCREEN.markerTitle}
+                  image={MAP_MARKER_ICON()}
+                />
+                <Circle
+                  center={{
+                    latitude,
+                    longitude,
+                  }}
+                  radius={70}
+                  fillColor={BACKGROUND_CIRCLE_MAP}
+                  strokeColor={PRIMARY_COLOR}
+                />
+              </>
             )}
           </MapView>
         </View>

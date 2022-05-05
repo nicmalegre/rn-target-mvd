@@ -1,6 +1,7 @@
 import React from 'react';
 import { func } from 'prop-types';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
+import useSession from 'hooks/useSession';
 
 import { updateUser } from 'actions/userActions';
 import Input from 'components/common/Input';
@@ -22,6 +23,10 @@ const UpdateProfileForm = ({ onSubmit }) => {
   const { error, status } = useStatus(updateUser);
   const validator = useValidation(updateUserValidations);
   const {
+    user: { username, email },
+  } = useSession();
+
+  const {
     values,
     errors,
     handleValueChange,
@@ -34,6 +39,7 @@ const UpdateProfileForm = ({ onSubmit }) => {
   } = useForm(
     {
       onSubmit,
+      initialValues: { username, email },
       validator,
       validateOnBlur: true,
       validateOnChange: true,

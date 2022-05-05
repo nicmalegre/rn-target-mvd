@@ -71,7 +71,7 @@ const LoginForm = ({ onSubmit }) => {
 
       <Button
         testID="login-submit-button"
-        title={isLoading ? strings.COMMON.loading : strings.SIGN_UP.button}
+        title={isLoading ? strings.COMMON.loading : strings.SIGN_IN.title}
         titleTestID={isLoading ? 'loading-text-button' : 'sign-in-text-button'}
         onPress={handleSubmit}
         disabled={formHasErrors || isLoading}

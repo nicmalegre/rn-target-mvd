@@ -8,7 +8,8 @@ export default {
 
   MAIN_SCREEN: {
     logout: 'Cerrar sesión',
-    title: 'Target Points',
+    title: 'Puntos objetivos',
+    newTarget: 'Crear nuevo objetivo',
   },
 
   SIGN_UP: {

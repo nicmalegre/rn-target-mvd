@@ -33,4 +33,16 @@ export default {
     forgotPassword: 'Olvidaste tu contraseña?',
     connectFacebook: 'Conectar con facebook',
   },
+
+  PROFILE_SCREEN: {
+    title: 'Perfil',
+    button: 'Cerrar sesión',
+  },
+
+  UPDATE_USER: {
+    username: 'Usuario',
+    email: 'Email',
+    password: 'Contraseña',
+    button: 'Guardar cambios',
+  },
 };

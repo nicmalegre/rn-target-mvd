@@ -4,19 +4,22 @@ import { View } from 'react-native';
 import strings from 'localization';
 import Container from 'components/common/Container';
 import { PROFILE_ICON } from 'constants/icons';
-import { MAIN_SCREEN } from 'constants/screens';
+import { MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
+import { useNavigation } from '@react-navigation/native';
 import NewTargetBar from 'components/NewTargetBar';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import styles from './styles';
 
 const MainScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <Container
       headerProps={{
         title: strings.MAIN_SCREEN.title,
         imageLeft: PROFILE_ICON(),
-        // TODO: Add correct function to show profile (left) and open chat (right)
-        onPressIconLeft: () => {},
+        onPressIconLeft: () => navigation.navigate(PROFILE_SCREEN),
+        // TODO: Add correct function to open chat (right)
         onPressIconRight: () => {},
       }}>
       <View style={styles.container} testID={MAIN_SCREEN}>

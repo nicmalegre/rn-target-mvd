@@ -1,27 +1,29 @@
 import React from 'react';
 import { View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import useUserLocation from 'hooks/useUserLocation';
 
-import strings from 'localization';
 import Container from 'components/common/Container';
-import { MAP_MARKER_ICON, PROFILE_ICON } from 'constants/icons';
-import { MAIN_SCREEN } from 'constants/screens';
 import NewTargetBar from 'components/NewTargetBar';
 import MapView, { Circle, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import useUserLocation from 'hooks/useUserLocation';
+import strings from 'localization';
+import { MAP_MARKER_ICON, PROFILE_ICON } from 'constants/icons';
+import { MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
 import { BACKGROUND_CIRCLE_MAP, PRIMARY_COLOR } from 'constants/colors';
 import styles from './styles';
 
 const MainScreen = () => {
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
+  const navigation = useNavigation();
 
   return (
     <Container
       headerProps={{
         title: strings.MAIN_SCREEN.title,
         imageLeft: PROFILE_ICON(),
-        // TODO: Add correct function to show profile (left) and open chat (right)
-        onPressIconLeft: () => {},
+        onPressIconLeft: () => navigation.navigate(PROFILE_SCREEN),
+        // TODO: Add correct function to open chat (right)
         onPressIconRight: () => {},
       }}>
       <View style={styles.container} testID={MAIN_SCREEN}>

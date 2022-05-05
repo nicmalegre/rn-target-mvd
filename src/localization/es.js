@@ -47,4 +47,16 @@ export default {
     goToSettings: 'Ir a ajustes',
     closeButton: 'No permitir',
   },
+
+  PROFILE_SCREEN: {
+    title: 'Perfil',
+    button: 'Cerrar sesión',
+  },
+
+  UPDATE_USER: {
+    username: 'Usuario',
+    email: 'Email',
+    password: 'Contraseña',
+    button: 'Guardar cambios',
+  },
 };

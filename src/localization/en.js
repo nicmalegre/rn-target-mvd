@@ -46,4 +46,16 @@ export default {
     goToSettings: 'Go to settings',
     closeButton: "Don't use location",
   },
+
+  PROFILE_SCREEN: {
+    title: 'Profile',
+    button: 'Log out',
+  },
+
+  UPDATE_USER: {
+    username: 'Username',
+    email: 'Email',
+    password: 'Password',
+    button: 'Save changes',
+  },
 };

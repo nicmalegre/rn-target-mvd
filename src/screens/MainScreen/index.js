@@ -12,6 +12,11 @@ import { MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
 import { BACKGROUND_CIRCLE_MAP, PRIMARY_COLOR } from 'constants/colors';
 import styles from './styles';
 
+const DEFAULT_LOCATION = {
+  latitude: 37.78825,
+  longitude: -122.4324,
+};
+
 const MainScreen = () => {
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
@@ -32,8 +37,8 @@ const MainScreen = () => {
             provider={PROVIDER_GOOGLE}
             style={styles.map}
             region={{
-              latitude: userHasLocation ? latitude : 37.78825,
-              longitude: userHasLocation ? longitude : -122.4324,
+              latitude: userHasLocation ? latitude : DEFAULT_LOCATION.latitude,
+              longitude: userHasLocation ? longitude : DEFAULT_LOCATION.longitude,
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>

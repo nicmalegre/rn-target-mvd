@@ -8,7 +8,7 @@ import strings from 'localization';
 const useUserLocation = () => {
   const [userLocation, setUserLocation] = useState({});
 
-  const hasPermissionIOS = async () => {
+  const askForPermissionIOS = async () => {
     const openSetting = () => {
       Linking.openSettings();
     };
@@ -28,7 +28,7 @@ const useUserLocation = () => {
     return false;
   };
 
-  const hasPermissionAndroid = async () => {
+  const askForPermissionAndroid = async () => {
     if (Platform.Version < 23) {
       return true;
     }
@@ -48,12 +48,14 @@ const useUserLocation = () => {
     if (status === PermissionsAndroid.RESULTS.GRANTED) {
       return true;
     }
+
+    return false;
   };
 
   const hasLocationPermission = async () => {
     let hasPermission = false;
-    if (IS_IOS) hasPermission = await hasPermissionIOS();
-    else if (IS_ANDROID) hasPermission = await hasPermissionAndroid();
+    if (IS_IOS) hasPermission = await askForPermissionIOS();
+    else if (IS_ANDROID) hasPermission = await askForPermissionAndroid();
 
     return hasPermission;
   };

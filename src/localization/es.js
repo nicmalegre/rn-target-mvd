@@ -1,4 +1,9 @@
 export default {
+  COMMON: {
+    loading: 'Cargando',
+    somethingWentWrong: 'Algo ha salido mal',
+  },
+
   SIGN_IN: {
     title: 'Iniciar sesión',
     email: 'Email',
@@ -10,6 +15,7 @@ export default {
     logout: 'Cerrar sesión',
     title: 'Puntos objetivos',
     newTarget: 'Crear nuevo objetivo',
+    markerTitle: 'Tu ubicación',
   },
 
   SIGN_UP: {
@@ -19,6 +25,7 @@ export default {
     password: 'Contraseña',
     passwordPlaceholder: 'Min. 8 caracteres',
     passwordConfirmation: 'Repetir contraseña',
+    gender: 'Género',
     button: 'Iniciar sesión',
     picker: {
       label: 'Selecciona tu género',
@@ -32,6 +39,13 @@ export default {
     title: 'Target MVD',
     forgotPassword: 'Olvidaste tu contraseña?',
     connectFacebook: 'Conectar con facebook',
+  },
+
+  LOCATION: {
+    alertText:
+      'Habilitar los servicios de localización para permitir a "Target" acceder a tu ubicación.',
+    goToSettings: 'Ir a ajustes',
+    closeButton: 'No permitir',
   },
 
   PROFILE_SCREEN: {

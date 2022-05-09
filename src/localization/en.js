@@ -15,6 +15,7 @@ export default {
     logout: 'Sign out',
     title: 'Target Points',
     newTarget: 'Create new target',
+    markerTitle: 'Your location',
   },
 
   SIGN_UP: {
@@ -38,6 +39,12 @@ export default {
     title: 'Target MVD',
     forgotPassword: 'Forgot your password?',
     connectFacebook: 'Connect with facebook',
+  },
+
+  LOCATION: {
+    alertText: 'Turn on Location Services to allow "Target" to determine your location.',
+    goToSettings: 'Go to settings',
+    closeButton: "Don't use location",
   },
 
   PROFILE_SCREEN: {

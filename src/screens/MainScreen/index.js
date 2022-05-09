@@ -5,11 +5,11 @@ import useUserLocation from 'hooks/useUserLocation';
 
 import Container from 'components/common/Container';
 import NewTargetBar from 'components/NewTargetBar';
-import MapView, { Circle, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import strings from 'localization';
-import { MAP_MARKER_ICON, PROFILE_ICON } from 'constants/icons';
+import { PROFILE_ICON } from 'constants/icons';
 import { MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
-import { BACKGROUND_CIRCLE_MAP, PRIMARY_COLOR } from 'constants/colors';
+import UserLocationMarker from 'components/UserLocationMarker';
 import styles from './styles';
 
 const DEFAULT_LOCATION = {
@@ -42,28 +42,7 @@ const MainScreen = () => {
               latitudeDelta: 0.015,
               longitudeDelta: 0.0121,
             }}>
-            {userHasLocation && (
-              <>
-                <Marker
-                  key="user-location-marker"
-                  coordinate={{
-                    latitude,
-                    longitude,
-                  }}
-                  title={strings.MAIN_SCREEN.markerTitle}
-                  image={MAP_MARKER_ICON()}
-                />
-                <Circle
-                  center={{
-                    latitude,
-                    longitude,
-                  }}
-                  radius={70}
-                  fillColor={BACKGROUND_CIRCLE_MAP}
-                  strokeColor={PRIMARY_COLOR}
-                />
-              </>
-            )}
+            {userHasLocation && <UserLocationMarker latitude={latitude} longitude={longitude} />}
           </MapView>
         </View>
 

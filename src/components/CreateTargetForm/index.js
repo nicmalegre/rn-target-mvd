@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { func } from 'prop-types';
 import { useStatus, LOADING } from '@rootstrap/redux-tools';
-import useSession from 'hooks/useSession';
-
-import { updateUser } from 'actions/userActions';
-import Input from 'components/common/Input';
-import useForm from 'hooks/useForm';
 import useValidation from 'hooks/useValidation';
-import updateUserValidations from 'validations/updateUserValidations';
-import ErrorView from 'components/common/ErrorView';
+import useForm from 'hooks/useForm';
 import useTextInputProps from 'hooks/useTextInputProps';
-import strings from 'localization';
+import usePickerProps from 'hooks/usePickerProps';
+
+import Input from 'components/common/Input';
+import ErrorView from 'components/common/ErrorView';
+import TopicListModal from 'components/TopicListModal';
+import TopicPicker from 'components/common/TopicPicker';
 import Button from 'components/common/Button';
+import createTargetValidations from 'validations/createTargetValidations';
+import { updateUser } from 'actions/userActions';
+import strings from 'localization';
 import { BLACK } from 'constants/colors';
 import styles from './styles';
 
 const FIELDS = {
-  areaLenght: 'areaLenght',
+  radius: 'radius',
   targetTitle: 'targetTitle',
   topic: 'topic',
 };
 
 const CreateTargetForm = ({ onSubmit }) => {
+  const [isTopicModalVisible, setIsTopicModalVisible] = useState(false);
   const { error, status } = useStatus(updateUser);
-  const validator = useValidation(updateUserValidations);
-  const {
-    user: { username, email },
-  } = useSession();
+  const validator = useValidation(createTargetValidations);
 
   const {
     values,
@@ -41,7 +41,6 @@ const CreateTargetForm = ({ onSubmit }) => {
   } = useForm(
     {
       onSubmit,
-      initialValues: { username, email },
       validator,
       validateOnBlur: true,
       validateOnChange: true,
@@ -59,6 +58,17 @@ const CreateTargetForm = ({ onSubmit }) => {
     touched,
   );
 
+  const pickerProps = usePickerProps(
+    handleValueChange,
+    handleFocus,
+    handleBlur,
+    values,
+    errors,
+    activeFields,
+    touched,
+  );
+  const { onValueChange } = pickerProps(FIELDS.topic);
+
   const isLoading = status === LOADING;
 
   return (
@@ -73,7 +83,7 @@ const CreateTargetForm = ({ onSubmit }) => {
         placeholderTextColor={BLACK}
         upperCasePlaceholder={false}
         styleInput={styles.input}
-        {...inputProps(FIELDS.areaLenght)}
+        {...inputProps(FIELDS.radius)}
       />
       <Input
         label={strings.CREATE_TARGET.targetTitle}
@@ -86,15 +96,18 @@ const CreateTargetForm = ({ onSubmit }) => {
         styleInput={styles.input}
         {...inputProps(FIELDS.targetTitle)}
       />
-      <Input
+      <TopicPicker
         label={strings.CREATE_TARGET.topic}
         testID="topic-input"
-        styleContainer={styles.inputContainer}
         placeholder={strings.CREATE_TARGET.topicPlaceholder}
-        placeholderTextColor={BLACK}
-        upperCasePlaceholder={false}
-        styleInput={styles.input}
-        {...inputProps(FIELDS.topic)}
+        onPress={() => setIsTopicModalVisible(true)}
+        {...pickerProps(FIELDS.topic)}
+        value={values[FIELDS.topic] || {}}
+      />
+      <TopicListModal
+        isModalVisible={isTopicModalVisible}
+        setModalVisible={setIsTopicModalVisible}
+        onValueChange={onValueChange}
       />
       <ErrorView errors={{ error }} />
 

@@ -1,5 +1,5 @@
 export default {
-  radius: {
+  areaLenght: {
     presence: true,
   },
   targetTitle: {

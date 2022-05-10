@@ -12,21 +12,22 @@ import TopicListModal from 'components/TopicListModal';
 import TopicPicker from 'components/common/TopicPicker';
 import Button from 'components/common/Button';
 import createTargetValidations from 'validations/createTargetValidations';
-import { updateUser } from 'actions/userActions';
+import { createTarget } from 'actions/targetActions';
 import strings from 'localization';
 import { BLACK } from 'constants/colors';
 import styles from './styles';
 
 const FIELDS = {
-  radius: 'radius',
+  areaLenght: 'areaLenght',
   targetTitle: 'targetTitle',
   topic: 'topic',
 };
 
-const CreateTargetForm = ({ onSubmit }) => {
+const CreateTargetForm = ({ onSubmit, userLocation }) => {
   const [isTopicModalVisible, setIsTopicModalVisible] = useState(false);
-  const { error, status } = useStatus(updateUser);
+  const { error, status } = useStatus(createTarget);
   const validator = useValidation(createTargetValidations);
+  const { latitude, longitude } = userLocation;
 
   const {
     values,
@@ -41,6 +42,7 @@ const CreateTargetForm = ({ onSubmit }) => {
   } = useForm(
     {
       onSubmit,
+      initialValues: { latitude, longitude },
       validator,
       validateOnBlur: true,
       validateOnChange: true,
@@ -83,7 +85,7 @@ const CreateTargetForm = ({ onSubmit }) => {
         placeholderTextColor={BLACK}
         upperCasePlaceholder={false}
         styleInput={styles.input}
-        {...inputProps(FIELDS.radius)}
+        {...inputProps(FIELDS.areaLenght)}
       />
       <Input
         label={strings.CREATE_TARGET.targetTitle}

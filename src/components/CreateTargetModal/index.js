@@ -1,18 +1,29 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { SUCCESS, useStatus } from '@rootstrap/redux-tools';
 import useUserLocation from 'hooks/useUserLocation';
 import { createTarget } from 'actions/targetActions';
-import Modal from 'react-native-modal';
-import { bool, func } from 'prop-types';
 import CreateTargetForm from 'components/CreateTargetForm';
 import KeyboardAreaView from 'components/common/KeyboardAreaView';
+import Modal from 'react-native-modal';
+import { bool, func } from 'prop-types';
 import styles from './styles';
 
 const CreateTargetModal = ({ isModalVisible, setModalVisible }) => {
+  const { status } = useStatus(createTarget);
   const { userLocation } = useUserLocation();
   const dispatch = useDispatch();
-  const createTargetRequest = useCallback(target => dispatch(createTarget(target)), [dispatch]);
+
+  const onSubmit = useCallback(
+    async target => {
+      await dispatch(createTarget(target));
+      if (status === SUCCESS) {
+        setModalVisible(false);
+      }
+    },
+    [dispatch],
+  );
 
   return (
     <Modal
@@ -22,7 +33,7 @@ const CreateTargetModal = ({ isModalVisible, setModalVisible }) => {
       onBackdropPress={() => setModalVisible(false)}>
       <KeyboardAreaView styleContainer={styles.keyboardAreaContainer}>
         <View style={styles.modalContainer}>
-          <CreateTargetForm onSubmit={createTargetRequest} userLocation={userLocation} />
+          <CreateTargetForm onSubmit={onSubmit} userLocation={userLocation} />
         </View>
       </KeyboardAreaView>
     </Modal>

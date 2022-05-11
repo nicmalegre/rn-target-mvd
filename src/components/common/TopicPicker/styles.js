@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.7,
     textAlign: 'center',
     paddingLeft: 9,
+    color: BLACK,
   },
   inputError: {
     borderColor: ERROR,

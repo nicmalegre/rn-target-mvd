@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     letterSpacing: 1.95,
     paddingLeft: 9,
+    color: BLACK,
   },
 });
 

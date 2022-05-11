@@ -24,6 +24,8 @@ const Input = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const placeholderText = upperCasePlaceholder ? placeholder.toUpperCase() : placeholder;
+
   return (
     <View style={[styles.container, styleContainer]}>
       {!!label && <Text style={styles.label}>{label}</Text>}
@@ -33,7 +35,7 @@ const Input = ({
           value={value}
           onChangeText={onChangeText}
           placeholderTextColor={placeholderTextColor}
-          placeholder={upperCasePlaceholder ? placeholder.toUpperCase() : placeholder}
+          placeholder={!active ? placeholderText : ''}
           {...props}
         />
         {touched && !!error && (

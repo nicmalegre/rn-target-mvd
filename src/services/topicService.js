@@ -2,7 +2,8 @@ import httpClient from 'httpClient';
 
 class TopicService {
   getTopics() {
-    return httpClient.get('/topics');
+    // FYI: 'data:null' is to avoid header error in GET request
+    return httpClient.get('/topics', { data: null });
   }
 }
 

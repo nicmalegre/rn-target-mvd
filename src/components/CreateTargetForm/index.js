@@ -42,7 +42,7 @@ const CreateTargetForm = ({ onSubmit, userLocation }) => {
   } = useForm(
     {
       onSubmit,
-      initialValues: { latitude, longitude },
+      initialValues: { areaLenght: '200', latitude, longitude },
       validator,
       validateOnBlur: true,
       validateOnChange: true,
@@ -81,9 +81,6 @@ const CreateTargetForm = ({ onSubmit, userLocation }) => {
         autoCapitalize="none"
         testID="area-lenght-input"
         styleContainer={styles.inputContainer}
-        placeholder={strings.CREATE_TARGET.areaLenghtPlaceholder}
-        placeholderTextColor={BLACK}
-        upperCasePlaceholder={false}
         styleInput={styles.input}
         {...inputProps(FIELDS.areaLenght)}
       />

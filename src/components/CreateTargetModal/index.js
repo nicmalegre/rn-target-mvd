@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { SUCCESS, useStatus } from '@rootstrap/redux-tools';
+import { LOADING, SUCCESS, useStatus } from '@rootstrap/redux-tools';
 import useUserLocation from 'hooks/useUserLocation';
 import { createTarget } from 'actions/targetActions';
 import CreateTargetForm from 'components/CreateTargetForm';
@@ -25,12 +25,14 @@ const CreateTargetModal = ({ isModalVisible, setModalVisible }) => {
     [dispatch],
   );
 
+  const isLoading = status === LOADING;
+
   return (
     <Modal
       isVisible={isModalVisible}
       style={styles.modal}
       backdropOpacity={0}
-      onBackdropPress={() => setModalVisible(false)}>
+      onBackdropPress={!isLoading ? () => setModalVisible(false) : () => {}}>
       <KeyboardAreaView styleContainer={styles.keyboardAreaContainer}>
         <View style={styles.modalContainer}>
           <CreateTargetForm onSubmit={onSubmit} userLocation={userLocation} />

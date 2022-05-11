@@ -81,7 +81,7 @@ const CreateTargetForm = ({ onSubmit, userLocation }) => {
         autoCapitalize="none"
         testID="area-lenght-input"
         styleContainer={styles.inputContainer}
-        styleInput={styles.input}
+        styleInput={styles.areaLenghtInput}
         {...inputProps(FIELDS.areaLenght)}
       />
       <Input

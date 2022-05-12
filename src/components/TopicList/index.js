@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { FlatList, TouchableHighlight, View, Text, Image } from 'react-native';
+import { FlatList, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTopics } from 'actions/topicActions';
-import { WHITE } from 'constants/colors';
+import TopicListItem from 'components/TopicListItem';
 import { func } from 'prop-types';
 import styles from './styles';
 
@@ -23,26 +23,19 @@ const TopicList = ({ setModalVisible, onValueChange }) => {
       data={topics}
       style={styles.flatListContainer}
       renderItem={({ item: { topic } }) => (
-        <TouchableHighlight
-          key={`topic-${topic.id}`}
-          underlayColor={WHITE}
-          onPress={() => {
-            onValueChange(topic);
-            setModalVisible(false);
-          }}>
-          <View style={styles.topicContainer}>
-            <Image style={styles.image} source={{ uri: topic.icon }} />
-            <Text style={styles.text}>{topic.label}</Text>
-          </View>
-        </TouchableHighlight>
+        <TopicListItem
+          topic={topic}
+          setModalVisible={setModalVisible}
+          onValueChange={onValueChange}
+        />
       )}
     />
   );
 };
 
 TopicList.propTypes = {
-  setModalVisible: func,
-  onValueChange: func,
+  setModalVisible: func.isRequired,
+  onValueChange: func.isRequired,
 };
 
 export default TopicList;

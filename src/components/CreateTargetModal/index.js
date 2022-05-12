@@ -32,7 +32,7 @@ const CreateTargetModal = ({ isModalVisible, setModalVisible }) => {
       isVisible={isModalVisible}
       style={styles.modal}
       backdropOpacity={0}
-      onBackdropPress={!isLoading ? () => setModalVisible(false) : () => {}}>
+      onBackdropPress={!isLoading ? () => setModalVisible(false) : () => null}>
       <KeyboardAreaView styleContainer={styles.keyboardAreaContainer}>
         <View style={styles.modalContainer}>
           <CreateTargetForm onSubmit={onSubmit} userLocation={userLocation} />

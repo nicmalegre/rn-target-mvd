@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const handleCreateTargetSuccess = (state, { payload }) => {
-  state.targets = state.targets.concat(payload);
+  state.targets = [...state.targets, payload];
 };
 
 export default createReducer(initialState, {

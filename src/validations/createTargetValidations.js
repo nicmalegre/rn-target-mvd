@@ -1,5 +1,5 @@
 export default {
-  areaLenght: {
+  areaLength: {
     presence: true,
   },
   targetTitle: {

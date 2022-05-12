@@ -18,7 +18,7 @@ import { BLACK } from 'constants/colors';
 import styles from './styles';
 
 const FIELDS = {
-  areaLenght: 'areaLenght',
+  areaLength: 'areaLength',
   targetTitle: 'targetTitle',
   topic: 'topic',
 };
@@ -42,7 +42,7 @@ const CreateTargetForm = ({ onSubmit, userLocation }) => {
   } = useForm(
     {
       onSubmit,
-      initialValues: { areaLenght: '200', latitude, longitude },
+      initialValues: { areaLength: '200', latitude, longitude },
       validator,
       validateOnBlur: true,
       validateOnChange: true,
@@ -76,13 +76,13 @@ const CreateTargetForm = ({ onSubmit, userLocation }) => {
   return (
     <>
       <Input
-        label={strings.CREATE_TARGET.areaLenght}
+        label={strings.CREATE_TARGET.areaLength}
         keyboardType="numeric"
         autoCapitalize="none"
-        testID="area-lenght-input"
+        testID="area-length-input"
         styleContainer={styles.inputContainer}
-        styleInput={styles.areaLenghtInput}
-        {...inputProps(FIELDS.areaLenght)}
+        styleInput={styles.areaLengthInput}
+        {...inputProps(FIELDS.areaLength)}
       />
       <Input
         label={strings.CREATE_TARGET.targetTitle}

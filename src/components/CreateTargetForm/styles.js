@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     alignItems: 'flex-start',
   },
-  areaLenghtInput: {
+  areaLengthInput: {
     fontSize: 13,
     fontWeight: '600',
     lineHeight: 15,

@@ -60,8 +60,8 @@ export default {
   },
 
   CREATE_TARGET: {
-    areaLenght: 'Specify area lenght',
-    areaLenghtPlaceholder: '200 m',
+    areaLength: 'Specify area length',
+    areaLengthPlaceholder: '200 m',
     targetTitle: 'Target title',
     targetTitlePlaceholder: 'Choose a title for your target',
     topic: 'Select a topic',

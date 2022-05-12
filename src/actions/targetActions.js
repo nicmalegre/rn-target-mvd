@@ -4,13 +4,13 @@ import parseError from 'utils/parseError';
 
 export const createTarget = createThunk('CREATE_TARGET', async target => {
   try {
-    const { targetTitle, latitude, longitude, areaLenght, topic } = target;
+    const { targetTitle, latitude, longitude, areaLength, topic } = target;
 
     const { data } = await targetService.createTarget({
       title: targetTitle,
       lat: latitude,
       lng: longitude,
-      radius: Number(areaLenght),
+      radius: Number(areaLength),
       topic_id: topic.id,
     });
 

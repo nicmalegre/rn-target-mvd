@@ -61,8 +61,8 @@ export default {
   },
 
   CREATE_TARGET: {
-    areaLenght: 'Especificar distancia del area',
-    areaLenghtPlaceholder: '200 m',
+    areaLength: 'Especificar distancia del area',
+    areaLengthPlaceholder: '200 m',
     targetTitle: 'Titulo del objetivo',
     targetTitlePlaceholder: 'Agregar un titulo para tu objetivo',
     topic: 'Seleccionar un tema',

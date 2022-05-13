@@ -4,7 +4,10 @@ import parseError from 'utils/parseError';
 
 export const getTargets = createThunk('GET_TARGETS', async () => {
   try {
-    const { data: targets } = await targetService.getTargets();
+    const {
+      data: { targets },
+    } = await targetService.getTargets();
+
     return targets;
   } catch ({ response }) {
     throw parseError(response);

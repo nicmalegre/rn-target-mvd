@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import useUserLocation from 'hooks/useUserLocation';
 
 import Container from 'components/common/Container';
 import NewTargetBar from 'components/NewTargetBar';
+import CreateTargetModal from 'components/CreateTargetModal';
+import UserLocationMarker from 'components/UserLocationMarker';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import strings from 'localization';
 import { PROFILE_ICON } from 'constants/icons';
 import { MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
-import UserLocationMarker from 'components/UserLocationMarker';
 import styles from './styles';
 
 const DEFAULT_LOCATION = {
@@ -21,6 +22,8 @@ const MainScreen = () => {
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
   const navigation = useNavigation();
+
+  const [isModalVisible, setModalVisible] = useState(false);
 
   return (
     <Container
@@ -46,8 +49,9 @@ const MainScreen = () => {
           </MapView>
         </View>
 
-        {/* TO DO: Add feature to create new target onPress */}
-        <NewTargetBar title={strings.MAIN_SCREEN.newTarget} onPress={() => {}} />
+        <NewTargetBar title={strings.MAIN_SCREEN.newTarget} onPress={() => setModalVisible(true)} />
+
+        <CreateTargetModal isModalVisible={isModalVisible} setModalVisible={setModalVisible} />
       </View>
     </Container>
   );

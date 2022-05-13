@@ -7,7 +7,7 @@ import styles from './styles';
 const KeyboardAreaView = ({ children, styleContainer, styleContentScrollView, ...props }) => {
   return (
     <KeyboardAvoidingView
-      behavior={IS_IOS ? 'padding' : 'height'}
+      behavior={IS_IOS ? 'padding' : ''}
       style={[styles.keyboardAvoidingView, styleContainer]}
       {...props}>
       <ScrollView contentContainerStyle={[styles.scrollView, styleContentScrollView]}>

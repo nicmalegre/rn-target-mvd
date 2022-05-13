@@ -14,7 +14,7 @@ import { getTargets } from 'actions/targetActions';
 import { getTopics } from 'actions/topicActions';
 import strings from 'localization';
 import { PROFILE_ICON } from 'constants/icons';
-import { MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
+import { CHATS_SCREEN, MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
 import styles from './styles';
 
 const DEFAULT_LOCATION = {
@@ -44,8 +44,7 @@ const MainScreen = () => {
         title: strings.MAIN_SCREEN.title,
         imageLeft: PROFILE_ICON(),
         onPressIconLeft: () => navigation.navigate(PROFILE_SCREEN),
-        // TODO: Add correct function to open chat (right)
-        onPressIconRight: () => {},
+        onPressIconRight: () => navigation.navigate(CHATS_SCREEN),
       }}>
       <View style={styles.container} testID={MAIN_SCREEN}>
         <View style={styles.mapContainer}>

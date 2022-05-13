@@ -4,3 +4,4 @@ export const BACK_ARROW_ICON = () => require('assets/icons/BackArrow/BackArrow.p
 export const RIGHT_ARROW_ICON = () => require('assets/icons/RightArrow/RightArrow.png');
 export const TARGET_ICON = () => require('assets/icons/Target/Target.png');
 export const MAP_MARKER_ICON = () => require('assets/icons/MapMarker/MapMarker.png');
+export const LOCATION_ICON = () => require('assets/icons/Location/Location.png');

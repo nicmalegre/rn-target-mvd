@@ -68,4 +68,8 @@ export default {
     topicPlaceholder: 'What do you want to talk about?',
     button: 'Save target',
   },
+
+  CHATS_SCREEN: {
+    title: 'Chat',
+  },
 };

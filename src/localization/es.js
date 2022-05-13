@@ -69,4 +69,8 @@ export default {
     topicPlaceholder: 'Sobre que quieres hablar?',
     button: 'Guardar objetivo',
   },
+
+  CHATS_SCREEN: {
+    title: 'Chat',
+  },
 };

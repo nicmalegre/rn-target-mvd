@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
 import UpdateProfileForm from 'components/UpdateProfileForm';
-import { MAIN_SCREEN, SIGN_UP_SCREEN } from 'constants/screens';
+import { SIGN_UP_SCREEN } from 'constants/screens';
 import { logout, updateUser } from 'actions/userActions';
 import strings from 'localization';
 import Container from 'components/common/Container';
@@ -22,7 +22,7 @@ const ProfileScreen = memo(() => {
       headerProps={{
         title: strings.PROFILE_SCREEN.title,
         imageRight: RIGHT_ARROW_ICON(),
-        onPressIconRight: () => navigation.navigate(MAIN_SCREEN),
+        onPressIconRight: () => navigation.goBack(),
       }}>
       <View style={styles.container} testID={SIGN_UP_SCREEN}>
         <Image source={require('assets/images/logos/profile-image.png')} style={styles.image} />

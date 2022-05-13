@@ -58,4 +58,14 @@ export default {
     password: 'Password',
     button: 'Save changes',
   },
+
+  CREATE_TARGET: {
+    areaLength: 'Specify area length',
+    areaLengthPlaceholder: '200 m',
+    targetTitle: 'Target title',
+    targetTitlePlaceholder: 'Choose a title for your target',
+    topic: 'Select a topic',
+    topicPlaceholder: 'What do you want to talk about?',
+    button: 'Save target',
+  },
 };

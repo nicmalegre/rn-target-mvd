@@ -59,4 +59,14 @@ export default {
     password: 'Contraseña',
     button: 'Guardar cambios',
   },
+
+  CREATE_TARGET: {
+    areaLength: 'Especificar distancia del area',
+    areaLengthPlaceholder: '200 m',
+    targetTitle: 'Titulo del objetivo',
+    targetTitlePlaceholder: 'Agregar un titulo para tu objetivo',
+    topic: 'Seleccionar un tema',
+    topicPlaceholder: 'Sobre que quieres hablar?',
+    button: 'Guardar objetivo',
+  },
 };

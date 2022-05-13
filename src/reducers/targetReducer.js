@@ -10,7 +10,7 @@ const handleGetTargetsSuccess = (state, { payload }) => {
 };
 
 const handleCreateTargetSuccess = (state, { payload }) => {
-  state.targets = state.targets.concat(payload);
+  state.targets = [...state.targets, payload];
 };
 
 export default createReducer(initialState, {

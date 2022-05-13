@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { LOADING, SUCCESS, useStatus } from '@rootstrap/redux-tools';
@@ -14,16 +14,13 @@ const CreateTargetModal = ({ isModalVisible, setModalVisible }) => {
   const { status } = useStatus(createTarget);
   const { userLocation } = useUserLocation();
   const dispatch = useDispatch();
+  const createTargetRequest = useCallback(target => dispatch(createTarget(target)), [dispatch]);
 
-  const onSubmit = useCallback(
-    async target => {
-      await dispatch(createTarget(target));
-      if (status === SUCCESS) {
-        setModalVisible(false);
-      }
-    },
-    [dispatch],
-  );
+  useEffect(() => {
+    if (status === SUCCESS) {
+      setModalVisible(false);
+    }
+  }, [status]);
 
   const isLoading = status === LOADING;
 
@@ -35,7 +32,7 @@ const CreateTargetModal = ({ isModalVisible, setModalVisible }) => {
       onBackdropPress={!isLoading ? () => setModalVisible(false) : () => null}>
       <KeyboardAreaView styleContainer={styles.keyboardAreaContainer}>
         <View style={styles.modalContainer}>
-          <CreateTargetForm onSubmit={onSubmit} userLocation={userLocation} />
+          <CreateTargetForm onSubmit={createTargetRequest} userLocation={userLocation} />
         </View>
       </KeyboardAreaView>
     </Modal>

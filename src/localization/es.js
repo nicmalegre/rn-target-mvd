@@ -59,4 +59,8 @@ export default {
     password: 'Contraseña',
     button: 'Guardar cambios',
   },
+
+  CHATS_SCREEN: {
+    title: 'Chat',
+  },
 };

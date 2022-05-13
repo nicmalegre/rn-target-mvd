@@ -58,4 +58,8 @@ export default {
     password: 'Password',
     button: 'Save changes',
   },
+
+  CHATS_SCREEN: {
+    title: 'Chat',
+  },
 };

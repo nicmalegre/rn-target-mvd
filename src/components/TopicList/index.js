@@ -1,14 +1,12 @@
 import React from 'react';
 import { FlatList, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import useTopics from 'hooks/useTopics';
 import TopicListItem from 'components/TopicListItem';
 import { func } from 'prop-types';
 import styles from './styles';
 
 const TopicList = ({ setModalVisible, onValueChange }) => {
-  const { topics } = useSelector(({ topics }) => ({
-    topics: topics?.topics ?? [],
-  }));
+  const { topics } = useTopics();
 
   return (
     <FlatList

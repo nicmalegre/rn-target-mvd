@@ -3,12 +3,12 @@ import { shape, number, string } from 'prop-types';
 const AVATAR = shape({
   originalUrl: string,
   normalUrl: string,
-  smallThumb_url: string,
+  smallThumbUrl: string,
 });
 
 const USER = shape({
   id: number.isRequired,
-  fullNname: string,
+  fullName: string,
   avatar: AVATAR.isRequired,
 });
 

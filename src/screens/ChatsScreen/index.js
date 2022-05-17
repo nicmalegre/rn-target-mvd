@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import useConversations from 'hooks/useConversations';
 import Container from 'components/common/Container';
 import ChatListItem from 'components/ChatListItem';
+import { getConversations } from 'actions/conversationActions';
 import strings from 'localization';
 import { LOCATION_ICON, PROFILE_ICON } from 'constants/icons';
 import { CHATS_SCREEN, MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
@@ -10,6 +13,12 @@ import styles from './styles';
 
 const ChatsScreen = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const { matches } = useConversations();
+
+  useEffect(() => {
+    dispatch(getConversations());
+  }, []);
 
   return (
     <Container
@@ -22,8 +31,7 @@ const ChatsScreen = () => {
       }}>
       <View testID={CHATS_SCREEN}>
         <FlatList
-          // TO DO: Add logic to get matches and pass as 'data'
-          data={[]}
+          data={matches}
           contentContainerStyle={styles.flatListContainer}
           // TO DO: Add function to open chat onPress
           renderItem={({ item: match }) => <ChatListItem match={match} onPress={() => {}} />}

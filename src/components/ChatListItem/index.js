@@ -2,8 +2,9 @@ import React from 'react';
 import { TouchableHighlight, View, Text, Image } from 'react-native';
 import { WHITE } from 'constants/colors';
 import { PROFILE_ICON } from 'constants/icons';
+import { MATCH } from 'constants/propTypes';
+import { func } from 'prop-types';
 import strings from 'localization';
-import { object, func } from 'prop-types';
 import styles from './styles';
 
 const ChatListItem = ({ match, onPress }) => {
@@ -41,7 +42,7 @@ const ChatListItem = ({ match, onPress }) => {
 };
 
 ChatListItem.propTypes = {
-  match: object.isRequired,
+  match: MATCH.isRequired,
   onPress: func.isRequired,
 };
 

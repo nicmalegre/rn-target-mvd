@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import useUserLocation from 'hooks/useUserLocation';
+import useTopics from 'hooks/useTopics';
+import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
@@ -15,6 +16,7 @@ import { getTopics } from 'actions/topicActions';
 import strings from 'localization';
 import { PROFILE_ICON } from 'constants/icons';
 import { CHATS_SCREEN, MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
+import { findTopicById } from 'utils/helpers';
 import styles from './styles';
 
 const DEFAULT_LOCATION = {
@@ -26,6 +28,7 @@ const MainScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
+  const { topics } = useTopics();
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -62,9 +65,9 @@ const MainScreen = () => {
               targets.map(({ target }) => (
                 <TargetMarker
                   key={target.id}
+                  topicIcon={findTopicById(target?.topicId, topics)?.icon}
                   latitude={target.lat}
                   longitude={target.lng}
-                  topicId={target.topicId}
                 />
               ))}
           </MapView>

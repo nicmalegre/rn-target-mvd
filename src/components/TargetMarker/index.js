@@ -1,19 +1,11 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-
 import { Marker } from 'react-native-maps';
-import strings from 'localization';
-import { number } from 'prop-types';
 import TopicIcon from 'components/TopicIcon';
+import strings from 'localization';
+import { number, string } from 'prop-types';
 
-const TargetMarker = ({ latitude, longitude, topicId }) => {
-  const { topics } = useSelector(({ topics }) => ({
-    topics: topics?.topics ?? [],
-  }));
-
-  const { topic } = topics?.find(({ topic: { id } }) => id === topicId) || {};
-
-  if (!topic?.id) return null;
+const TargetMarker = ({ topicIcon, latitude, longitude }) => {
+  if (!topicIcon) return null;
 
   return (
     <Marker
@@ -23,12 +15,13 @@ const TargetMarker = ({ latitude, longitude, topicId }) => {
         longitude,
       }}
       title={strings.MAIN_SCREEN.markerTitle}>
-      <TopicIcon uri={topic.icon} />
+      <TopicIcon uri={topicIcon} />
     </Marker>
   );
 };
 
 TargetMarker.propTypes = {
+  topicIcon: string.isRequired,
   latitude: number.isRequired,
   longitude: number.isRequired,
 };

@@ -13,7 +13,7 @@ const TargetMarker = ({ latitude, longitude, topicId }) => {
 
   const { topic } = topics?.find(({ topic: { id } }) => id === topicId) || {};
 
-  if (!topic) return null;
+  if (!topic?.id) return null;
 
   return (
     <Marker

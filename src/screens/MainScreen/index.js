@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import useUserLocation from 'hooks/useUserLocation';
+import useTargets from 'hooks/useTargets';
 import useTopics from 'hooks/useTopics';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Container from 'components/common/Container';
@@ -28,6 +29,7 @@ const MainScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
+  const { targets } = useTargets();
   const { topics } = useTopics();
   const navigation = useNavigation();
   const dispatch = useDispatch();
@@ -36,10 +38,6 @@ const MainScreen = () => {
     dispatch(getTargets());
     dispatch(getTopics());
   }, []);
-
-  const { targets } = useSelector(({ targets }) => ({
-    targets: targets?.targets ?? [],
-  }));
 
   return (
     <Container

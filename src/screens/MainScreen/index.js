@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 import useUserLocation from 'hooks/useUserLocation';
+import useTargets from 'hooks/useTargets';
+import useTopics from 'hooks/useTopics';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Container from 'components/common/Container';
 import NewTargetBar from 'components/NewTargetBar';
 import CreateTargetModal from 'components/CreateTargetModal';
 import UserLocationMarker from 'components/UserLocationMarker';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import TargetMarker from 'components/TargetMarker';
+import { getTargets } from 'actions/targetActions';
+import { getTopics } from 'actions/topicActions';
 import strings from 'localization';
 import { PROFILE_ICON } from 'constants/icons';
 import { CHATS_SCREEN, MAIN_SCREEN, PROFILE_SCREEN } from 'constants/screens';
+import { findTopicById } from 'utils/helpers';
 import styles from './styles';
 
 const DEFAULT_LOCATION = {
@@ -18,11 +26,18 @@ const DEFAULT_LOCATION = {
 };
 
 const MainScreen = () => {
+  const [isModalVisible, setModalVisible] = useState(false);
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
+  const { targets } = useTargets();
+  const { topics } = useTopics();
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const [isModalVisible, setModalVisible] = useState(false);
+  useEffect(() => {
+    dispatch(getTargets());
+    dispatch(getTopics());
+  }, []);
 
   return (
     <Container
@@ -44,6 +59,15 @@ const MainScreen = () => {
               longitudeDelta: 0.0121,
             }}>
             {userHasLocation && <UserLocationMarker latitude={latitude} longitude={longitude} />}
+            {targets?.length > 0 &&
+              targets.map(({ target }) => (
+                <TargetMarker
+                  key={target.id}
+                  topicIcon={findTopicById(target?.topicId, topics)?.icon}
+                  latitude={target.lat}
+                  longitude={target.lng}
+                />
+              ))}
           </MapView>
         </View>
 

@@ -1,8 +1,12 @@
 import { createReducer } from '@rootstrap/redux-tools';
-import { createTargetSuccess } from 'actions/targetActions';
+import { getTargetsSuccess, createTargetSuccess } from 'actions/targetActions';
 
 const initialState = {
   targets: [],
+};
+
+const handleGetTargetsSuccess = (state, { payload }) => {
+  state.targets = payload;
 };
 
 const handleCreateTargetSuccess = (state, { payload }) => {
@@ -10,5 +14,6 @@ const handleCreateTargetSuccess = (state, { payload }) => {
 };
 
 export default createReducer(initialState, {
+  [getTargetsSuccess]: handleGetTargetsSuccess,
   [createTargetSuccess]: handleCreateTargetSuccess,
 });

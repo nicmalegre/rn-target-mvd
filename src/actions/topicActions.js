@@ -4,7 +4,9 @@ import parseError from 'utils/parseError';
 
 export const getTopics = createThunk('GET_TOPICS', async () => {
   try {
-    const { data: topics } = await topicService.getTopics();
+    const {
+      data: { topics },
+    } = await topicService.getTopics();
 
     return topics;
   } catch ({ response }) {

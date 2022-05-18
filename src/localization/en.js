@@ -69,6 +69,22 @@ export default {
     button: 'Save target',
   },
 
+  UPDATE_TARGET: {
+    areaLength: 'Area length',
+    targetTitle: 'Target title',
+    topic: 'Topic',
+    delete: 'Delete',
+    save: 'Save',
+  },
+
+  DELETE_TARGET: {
+    modalTitle: 'Sure you want to delete this target?',
+    description:
+      'Remember that if you delete it, you won’t be able to chat with it’s matches anymore',
+    button: 'Delete target',
+    cancel: 'Cancel',
+  },
+
   CHATS_SCREEN: {
     title: 'Chat',
   },

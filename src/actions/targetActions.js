@@ -2,6 +2,18 @@ import { createThunk } from '@rootstrap/redux-tools';
 import targetService from 'services/targetService';
 import parseError from 'utils/parseError';
 
+export const getTargets = createThunk('GET_TARGETS', async () => {
+  try {
+    const {
+      data: { targets },
+    } = await targetService.getTargets();
+
+    return targets;
+  } catch ({ response }) {
+    throw parseError(response);
+  }
+});
+
 export const createTarget = createThunk('CREATE_TARGET', async target => {
   try {
     const { targetTitle, latitude, longitude, areaLength, topic } = target;
@@ -30,5 +42,6 @@ export const deleteTarget = createThunk('DELETE_TARGET', async id => {
   }
 });
 
+export const { success: getTargetsSuccess } = getTargets;
 export const { success: createTargetSuccess } = createTarget;
 export const { success: deleteTargetSuccess } = deleteTarget;

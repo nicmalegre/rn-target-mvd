@@ -71,5 +71,6 @@ export default {
 
   CHATS_SCREEN: {
     title: 'Chat',
+    notAvailableName: 'Name not available',
   },
 };

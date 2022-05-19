@@ -101,7 +101,8 @@ const MainScreen = () => {
           <UpdateTargetForm
             target={selectedTarget}
             topic={findTopicById(selectedTarget?.topicId, topics)}
-            onSubmit={createTargetRequest}
+            // TO DO: Update target on press
+            onSubmit={() => {}}
           />
         </Modal>
       </View>

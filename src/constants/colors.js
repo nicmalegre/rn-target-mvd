@@ -1,7 +1,9 @@
-export const WHITE = '#FFFFFF';
-export const ERROR = '#EB2A2A';
-export const BLACK = '#000000';
-export const GRAY = '#A6A6A6';
 export const PRIMARY_COLOR = '#EFC638';
+export const BLACK = '#000000';
+export const WHITE = '#FFFFFF';
+export const GRAY = '#A6A6A6';
+export const ERROR = '#EB2A2A';
+export const RED = '#D0021B';
 export const BACKGROUND_CIRCLE_MAP = 'rgba(255, 255, 255, 0.7)';
 export const BACKGROUND_TARGET_MARKER = 'rgba(239, 198, 56, 0.7)';
+export const BACKGROUND_SELECTED_TARGET_MARKER = 'rgba(47, 188, 247, 0.7)';

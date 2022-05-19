@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View } from 'react-native';
 import useUserLocation from 'hooks/useUserLocation';
 import useTargets from 'hooks/useTargets';
 import useTopics from 'hooks/useTopics';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
+import { LOADING, useStatus } from '@rootstrap/redux-tools';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Container from 'components/common/Container';
 import NewTargetBar from 'components/NewTargetBar';
-import CreateTargetModal from 'components/CreateTargetModal';
 import UserLocationMarker from 'components/UserLocationMarker';
 import TargetMarker from 'components/TargetMarker';
-import { getTargets } from 'actions/targetActions';
+import Modal from 'components/common/Modal';
+import CreateTargetForm from 'components/CreateTargetForm';
+import { createTarget, getTargets } from 'actions/targetActions';
 import { getTopics } from 'actions/topicActions';
 import strings from 'localization';
 import { PROFILE_ICON } from 'constants/icons';
@@ -31,8 +33,10 @@ const MainScreen = () => {
   const { latitude, longitude } = userLocation;
   const { targets } = useTargets();
   const { topics } = useTopics();
+  const { status } = useStatus(createTarget);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const createTargetRequest = useCallback(target => dispatch(createTarget(target)), [dispatch]);
 
   useEffect(() => {
     dispatch(getTargets());
@@ -73,7 +77,12 @@ const MainScreen = () => {
 
         <NewTargetBar title={strings.MAIN_SCREEN.newTarget} onPress={() => setModalVisible(true)} />
 
-        <CreateTargetModal isModalVisible={isModalVisible} setModalVisible={setModalVisible} />
+        <Modal
+          isModalVisible={isModalVisible}
+          setModalVisible={setModalVisible}
+          isLoading={status === LOADING}>
+          <CreateTargetForm onSubmit={createTargetRequest} userLocation={userLocation} />
+        </Modal>
       </View>
     </Container>
   );

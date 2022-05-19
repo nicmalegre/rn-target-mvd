@@ -28,8 +28,6 @@ const FIELDS = {
 const UpdateTargetForm = ({ target, topic, onSubmit }) => {
   const [isTopicModalVisible, setIsTopicModalVisible] = useState(false);
   const [isDeleteConfirmationModalVisible, setDeleteConfirmationModalVisible] = useState(false);
-
-  // TO DO: Change createTarget for updateTarget action
   const { error, status } = useStatus(createTarget);
   const validator = useValidation(createTargetValidations);
 

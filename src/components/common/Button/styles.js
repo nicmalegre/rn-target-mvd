@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BLACK, WHITE } from 'constants/colors';
+import { BLACK, RED, WHITE } from 'constants/colors';
 import { PRIMARY_FONT_SEMI_BOLD } from 'constants/fonts';
 
 const styles = StyleSheet.create({
@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
     fontSize: 50,
     letterSpacing: 1.65,
   },
+  danger: {
+    backgroundColor: RED,
+  },
   buttonTitle: {
     fontFamily: PRIMARY_FONT_SEMI_BOLD,
     fontSize: 11,
@@ -21,6 +24,7 @@ const styles = StyleSheet.create({
     letterSpacing: 1.65,
     color: WHITE,
     textTransform: 'uppercase',
+    textAlign: 'center',
   },
 });
 

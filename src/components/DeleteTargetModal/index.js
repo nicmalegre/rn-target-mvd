@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import KeyboardAreaView from 'components/common/KeyboardAreaView';
 import Modal from 'react-native-modal';
+import { useDispatch } from 'react-redux';
+import { LOADING, SUCCESS, useStatus } from '@rootstrap/redux-tools';
+import KeyboardAreaView from 'components/common/KeyboardAreaView';
+import TopicIcon from 'components/TopicIcon';
+import Button from 'components/common/Button';
+import { deleteTarget } from 'actions/targetActions';
 import { bool, func, object, string } from 'prop-types';
 import strings from 'localization';
-import Button from 'components/common/Button';
-import TopicIcon from 'components/TopicIcon';
 import styles from './styles';
 
 const DeleteTargetModal = ({ isModalVisible, setModalVisible, target, topicIcon }) => {
-  // TO DO: Add deleteTarget action
-  //
-  // const { status } = useStatus(deleteTarget);
-  // const dispatch = useDispatch();
-  // const deleteTargetRequest = useCallback(id => dispatch(deleteTarget(id)), [dispatch]);
-  // const isLoading = status === LOADING;
-  const isLoading = false;
+  const { status } = useStatus(deleteTarget);
+  const dispatch = useDispatch();
+  const deleteTargetRequest = useCallback(id => dispatch(deleteTarget(id)), [dispatch]);
+
+  useEffect(() => {
+    if (status === SUCCESS) {
+      setModalVisible(false);
+    }
+  }, [status]);
+
+  const isLoading = status === LOADING;
 
   return (
     <Modal
@@ -36,8 +43,7 @@ const DeleteTargetModal = ({ isModalVisible, setModalVisible, target, topicIcon 
           <Button
             testID="login-submit-button"
             title={isLoading ? strings.COMMON.loading : strings.DELETE_TARGET.button}
-            //  TO DO: Add deleteTarget action
-            onPress={() => {}}
+            onPress={() => deleteTargetRequest(target.id)}
             disabled={isLoading}
           />
 

@@ -5,7 +5,7 @@ import useTargets from 'hooks/useTargets';
 import useTopics from 'hooks/useTopics';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { LOADING, useStatus } from '@rootstrap/redux-tools';
+import { useStatus } from '@rootstrap/redux-tools';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Container from 'components/common/Container';
@@ -14,7 +14,8 @@ import UserLocationMarker from 'components/UserLocationMarker';
 import TargetMarker from 'components/TargetMarker';
 import Modal from 'components/common/Modal';
 import CreateTargetForm from 'components/CreateTargetForm';
-import { createTarget, getTargets } from 'actions/targetActions';
+import UpdateTargetForm from 'components/UpdateTargetForm';
+import { createTarget, deleteTarget, getTargets } from 'actions/targetActions';
 import { getTopics } from 'actions/topicActions';
 import strings from 'localization';
 import { PROFILE_ICON } from 'constants/icons';
@@ -29,11 +30,14 @@ const DEFAULT_LOCATION = {
 
 const MainScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isUpdateTargetVisible, setUpdateTargetVisible] = useState(false);
+  const [selectedTarget, setSelectedTarget] = useState({});
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
   const { targets } = useTargets();
   const { topics } = useTopics();
-  const { status } = useStatus(createTarget);
+  const createTargetStatus = useStatus(createTarget);
+  const deleteTargetStatus = useStatus(deleteTarget);
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const createTargetRequest = useCallback(target => dispatch(createTarget(target)), [dispatch]);
@@ -70,6 +74,11 @@ const MainScreen = () => {
                   topicIcon={findTopicById(target?.topicId, topics)?.icon}
                   latitude={target.lat}
                   longitude={target.lng}
+                  isSelected={target.id === selectedTarget.id}
+                  onPress={() => {
+                    setSelectedTarget(target);
+                    setUpdateTargetVisible(true);
+                  }}
                 />
               ))}
           </MapView>
@@ -80,8 +89,20 @@ const MainScreen = () => {
         <Modal
           isModalVisible={isModalVisible}
           setModalVisible={setModalVisible}
-          isLoading={status === LOADING}>
+          status={createTargetStatus?.status}>
           <CreateTargetForm onSubmit={createTargetRequest} userLocation={userLocation} />
+        </Modal>
+
+        <Modal
+          isModalVisible={isUpdateTargetVisible}
+          setModalVisible={setUpdateTargetVisible}
+          status={deleteTargetStatus?.status}
+          onBackdropPress={() => setSelectedTarget({})}>
+          <UpdateTargetForm
+            target={selectedTarget}
+            topic={findTopicById(selectedTarget?.topicId, topics)}
+            onSubmit={createTargetRequest}
+          />
         </Modal>
       </View>
     </Container>

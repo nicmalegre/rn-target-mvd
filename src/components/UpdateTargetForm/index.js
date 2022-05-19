@@ -47,7 +47,7 @@ const UpdateTargetForm = ({ target, topic, onSubmit }) => {
     {
       onSubmit,
       initialValues: {
-        areaLength: target.radius.toString(),
+        areaLength: target?.radius?.toString(),
         targetTitle: target.title,
         topic,
       },

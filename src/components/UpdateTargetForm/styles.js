@@ -1,0 +1,27 @@
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    alignItems: 'flex-start',
+  },
+  areaLengthInput: {
+    fontSize: 13,
+    fontWeight: '600',
+    lineHeight: 15,
+    letterSpacing: 1.95,
+  },
+  input: {
+    fontSize: 11,
+    fontWeight: '600',
+    lineHeight: 13,
+    letterSpacing: 0.7,
+  },
+  buttonsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  button: { paddingHorizontal: 30, minWidth: '45%' },
+});
+
+export default styles;

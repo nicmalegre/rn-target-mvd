@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { BACKGROUND_TARGET_MARKER } from 'constants/colors';
+import { BACKGROUND_SELECTED_TARGET_MARKER, BACKGROUND_TARGET_MARKER } from 'constants/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,6 +10,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  selected: {
+    backgroundColor: BACKGROUND_SELECTED_TARGET_MARKER,
   },
   image: {
     height: 25,

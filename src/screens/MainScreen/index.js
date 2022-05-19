@@ -1,18 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View } from 'react-native';
 import useUserLocation from 'hooks/useUserLocation';
 import useTargets from 'hooks/useTargets';
 import useTopics from 'hooks/useTopics';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
+import { useStatus } from '@rootstrap/redux-tools';
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import Container from 'components/common/Container';
 import NewTargetBar from 'components/NewTargetBar';
-import CreateTargetModal from 'components/CreateTargetModal';
 import UserLocationMarker from 'components/UserLocationMarker';
 import TargetMarker from 'components/TargetMarker';
-import { getTargets } from 'actions/targetActions';
+import Modal from 'components/common/Modal';
+import CreateTargetForm from 'components/CreateTargetForm';
+import UpdateTargetForm from 'components/UpdateTargetForm';
+import { createTarget, deleteTarget, getTargets } from 'actions/targetActions';
 import { getTopics } from 'actions/topicActions';
 import strings from 'localization';
 import { PROFILE_ICON } from 'constants/icons';
@@ -27,12 +30,17 @@ const DEFAULT_LOCATION = {
 
 const MainScreen = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isUpdateTargetVisible, setUpdateTargetVisible] = useState(false);
+  const [selectedTarget, setSelectedTarget] = useState({});
   const { userHasLocation, userLocation } = useUserLocation();
   const { latitude, longitude } = userLocation;
   const { targets } = useTargets();
   const { topics } = useTopics();
+  const createTargetStatus = useStatus(createTarget);
+  const deleteTargetStatus = useStatus(deleteTarget);
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const createTargetRequest = useCallback(target => dispatch(createTarget(target)), [dispatch]);
 
   useEffect(() => {
     dispatch(getTargets());
@@ -66,6 +74,11 @@ const MainScreen = () => {
                   topicIcon={findTopicById(target?.topicId, topics)?.icon}
                   latitude={target.lat}
                   longitude={target.lng}
+                  isSelected={target.id === selectedTarget.id}
+                  onPress={() => {
+                    setSelectedTarget(target);
+                    setUpdateTargetVisible(true);
+                  }}
                 />
               ))}
           </MapView>
@@ -73,7 +86,25 @@ const MainScreen = () => {
 
         <NewTargetBar title={strings.MAIN_SCREEN.newTarget} onPress={() => setModalVisible(true)} />
 
-        <CreateTargetModal isModalVisible={isModalVisible} setModalVisible={setModalVisible} />
+        <Modal
+          isModalVisible={isModalVisible}
+          setModalVisible={setModalVisible}
+          status={createTargetStatus?.status}>
+          <CreateTargetForm onSubmit={createTargetRequest} userLocation={userLocation} />
+        </Modal>
+
+        <Modal
+          isModalVisible={isUpdateTargetVisible}
+          setModalVisible={setUpdateTargetVisible}
+          status={deleteTargetStatus?.status}
+          onBackdropPress={() => setSelectedTarget({})}>
+          <UpdateTargetForm
+            target={selectedTarget}
+            topic={findTopicById(selectedTarget?.topicId, topics)}
+            // TO DO: Update target on press
+            onSubmit={() => {}}
+          />
+        </Modal>
       </View>
     </Container>
   );

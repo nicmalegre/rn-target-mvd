@@ -1,10 +1,9 @@
 import React from 'react';
 import { Marker } from 'react-native-maps';
 import TopicIcon from 'components/TopicIcon';
-import strings from 'localization';
-import { number, string } from 'prop-types';
+import { number, string, bool, func } from 'prop-types';
 
-const TargetMarker = ({ topicIcon, latitude, longitude }) => {
+const TargetMarker = ({ topicIcon, latitude, longitude, isSelected, onPress }) => {
   if (!topicIcon) return null;
 
   return (
@@ -14,16 +13,18 @@ const TargetMarker = ({ topicIcon, latitude, longitude }) => {
         latitude,
         longitude,
       }}
-      title={strings.MAIN_SCREEN.markerTitle}>
-      <TopicIcon uri={topicIcon} />
+      onPress={onPress}>
+      <TopicIcon uri={topicIcon} isSelected={isSelected} />
     </Marker>
   );
 };
 
 TargetMarker.propTypes = {
-  topicIcon: string.isRequired,
+  topicIcon: string,
   latitude: number.isRequired,
   longitude: number.isRequired,
+  isSelected: bool,
+  onPress: func,
 };
 
 export default TargetMarker;

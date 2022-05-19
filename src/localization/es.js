@@ -61,13 +61,28 @@ export default {
   },
 
   CREATE_TARGET: {
-    areaLength: 'Especificar distancia del area',
+    areaLength: 'Especificar distancia',
     areaLengthPlaceholder: '200 m',
     targetTitle: 'Titulo del objetivo',
     targetTitlePlaceholder: 'Agregar un titulo para tu objetivo',
     topic: 'Seleccionar un tema',
     topicPlaceholder: 'Sobre que quieres hablar?',
     button: 'Guardar objetivo',
+  },
+
+  UPDATE_TARGET: {
+    areaLength: 'Distancia',
+    targetTitle: 'Titulo del objetivo',
+    topic: 'Tema',
+    delete: 'Eliminar',
+    save: 'Guardar',
+  },
+
+  DELETE_TARGET: {
+    modalTitle: 'Estás seguro que deseas eliminar?',
+    description: 'Recuerda que si lo eliminas, ya no podrás chatear con sus coincidencias.',
+    button: 'Eliminar objetivo',
+    cancel: 'Cancelar',
   },
 
   CHATS_SCREEN: {

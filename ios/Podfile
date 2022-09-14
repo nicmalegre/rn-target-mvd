@@ -1,4 +1,4 @@
-platform :ios, '11.0'
+platform :ios, '12.0'
 require_relative '../node_modules/react-native/scripts/react_native_pods'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
@@ -21,14 +21,15 @@ def flipper_post_install(installer)
 end
 
 def base_pods
-
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
 end
 
-target 'ReactNativeBase' do
-  # Pods for ReactNativeBase
+target 'Target' do
+  # Pods for Target
   base_pods
 
-  target 'ReactNativeBaseTests' do
+  target 'TargetTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -37,34 +38,34 @@ target 'ReactNativeBase' do
   use_react_native!(:path => config["reactNativePath"])
 end
 
-target 'ReactNativeBase-Staging' do
-  # Pods for ReactNativeBase
+target 'Target-Staging' do
+  # Pods for Target
   base_pods
   
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])
 end
 
-target 'ReactNativeBase-QA' do
-  # Pods for ReactNativeBase
+target 'Target-QA' do
+  # Pods for Target
   base_pods
   
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])
 end
 
-target 'ReactNativeBase-Develop' do
-  # Pods for ReactNativeBase
+target 'Target-Develop' do
+  # Pods for Target
   base_pods
   
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])
 end
 
-target 'ReactNativeBase-tvOS' do
-  # Pods for ReactNativeBase-tvOS
+target 'Target-tvOS' do
+  # Pods for Target-tvOS
   
-  target 'ReactNativeBase-tvOSTests' do
+  target 'Target-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

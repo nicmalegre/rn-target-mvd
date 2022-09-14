@@ -19,6 +19,7 @@ module.exports = {
           utils: './src/utils',
           navigators: './src/navigators',
           validations: './src/validations',
+          assets: './src/assets',
         },
       },
     ],

@@ -43,8 +43,9 @@ describe('<LoginScreen />', () => {
         .reply(200);
       fireEvent.press(wrapper.queryByTestId('login-submit-button'));
 
-      expect(wrapper.queryByText('Loading')).toBeTruthy();
-      await waitFor(() => expect(wrapper.queryByText('Loading')).toBeNull());
+      const loadingTextId = 'loading-text-button';
+      expect(wrapper.queryByTestId(loadingTextId)).toBeTruthy();
+      await waitFor(() => expect(wrapper.queryByTestId(loadingTextId)).toBeNull());
     });
 
     describe('if the user exist', () => {
@@ -64,8 +65,9 @@ describe('<LoginScreen />', () => {
           );
         fireEvent.press(wrapper.queryByTestId('login-submit-button'));
 
+        const loadingTextId = 'loading-text-button';
         expect(wrapper.queryAllByLabelText('form-error')).toEqual([]);
-        await waitFor(() => expect(wrapper.queryByText('Loading')).toBeNull());
+        await waitFor(() => expect(wrapper.queryByTestId(loadingTextId)).toBeNull());
       });
     });
 

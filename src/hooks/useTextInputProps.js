@@ -14,9 +14,9 @@ export default (
       value: values[fieldKey] || '',
       error: Array.isArray(errors[fieldKey]) ? errors[fieldKey][0] : errors[fieldKey] || '',
       // Is currently active?
-      active: activeFields[fieldKey] || false,
+      active: !!activeFields[fieldKey],
       // Has been touched?
-      touched: touchedFields[fieldKey] || false,
+      touched: !!touchedFields[fieldKey],
       onChangeText: (text, isInitialSetup) => handleValueChange(fieldKey, text, isInitialSetup),
       onFocus: () => handleFocus(fieldKey),
       onBlur: () => handleBlur(fieldKey),
